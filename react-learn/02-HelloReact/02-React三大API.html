@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 本地依赖引入React -->
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        /**
+         * React三大API
+         *  - React.createElement() 创建虚拟DOM元素
+         *  - ReactDOM.createRoot() 创建React根元素
+         *  - rootDOM.render() 将React元素渲染到根元素中
+         */
+
+         // 需求: 通过React渲染出一个Button元素,并且绑定一些样式和事件
+
+         // 1. 创建React的Button元素
+         // 注意:
+         //     - 绑定class属性请使用className字段
+         //     - 绑定事件,属性名需要使用驼峰命名法,比如`onclick`事件使用`onClick`
+         const btn = React.createElement('button',{
+            // id属性
+            id: 'btn_id' ,
+            // class属性
+            className: 'btn_class',
+            // style属性
+            style: {color: 'red'},
+            // 绑定事件
+            onClick: ()=> alert("点击了一下~")
+         },"按钮")
+
+         // 2. 获取元素DOM,转换为ReactRoot元素
+         const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+         // 3. 将button元素渲染到根元素中
+         root.render(btn)
+
+    </script>
+    
+</body>
+</html>

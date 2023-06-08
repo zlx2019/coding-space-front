@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <!-- 第一个React页面 -->
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- 引入React依赖,React依赖三个包 -->
+    <!-- react核心包 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"> </script>
+    <!-- react dom 包 -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- babel 包 -->
+    <script  src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <script type="text/babel">
+        // React18版本之前的写法
+        
+        // 获取id为root的dom元素
+        // let rootDom = document.querySelector('#root');
+        // ReactDOM.render(<h1>Hello World</h1>,rootDom)
+
+        
+        // React18版本之后的写法
+        // 创建根节点
+        const root = ReactDOM.createRoot(document.querySelector("#root"))
+        let message = "Hello World"
+        // 渲染内容
+        root.render((
+            <div>
+                <h1>{message}</h1>
+                <button onClick={changeText}>点击更改文本</button>
+            </div>
+        ))
+        
+        // 动态修改message方式一
+        function changeText(){
+            message = "Hello React"
+            // 重新渲染
+            root.render((
+                <div>
+                    <h1>{message}</h1>
+                    <button onClick={changeText}>点击更改文本</button>
+                </div>
+            ))
+        }
+    </script>
+</body>
+</html>

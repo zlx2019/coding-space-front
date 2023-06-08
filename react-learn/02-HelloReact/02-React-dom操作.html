@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReactDom操作</title>
+    <script></script>
+</head>
+
+<!-- 本地依赖引入React -->
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<body>
+    <div id="root"></div>
+
+
+    <script>
+        // 需求: 通过React,向页面中#root标签中插入一个h1标签
+        // 流程: 
+        //      1. 创建ReactDOM的h1标签元素
+        //      2. 获取页面中的#root标签元素, 将该元素转换为React的root元素
+        //      3. 将h1标签元素渲染到root元素中
+
+        // 注意:
+        //      1. React元素最终会通过虚拟DOM转换为真实的原生DOM元素
+        //      2. React元素一旦创建就无法修改
+
+
+
+        // 1. 创建虚拟React元素
+        //      React.createElement()
+        //      - 用来创建React对应的虚拟DOM
+        //      - 参数:
+        //           1. 元素标签类型(组件名)
+        //           2. 元素属性对象
+        //           3. 元素内容(可能是子元素)
+        let h1 = React.createElement('h1',{id: 'hid'},'hello react')
+        console.log(h1);
+
+        // 2. 创建一个React根元素
+        //      ReactDOM.createRoot()
+        //      - 用来创建React的根元素,参数为一个原生的DOM元素,表示以该元素作为根元素
+        let root = ReactDOM.createRoot(document.querySelector('#root'))
+
+        // 3. 将虚拟DOM元素插入到根元素中
+        root.render(h1)
+    </script>
+</body>
+</html>
