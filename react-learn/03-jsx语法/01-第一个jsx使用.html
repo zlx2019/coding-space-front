@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/react.develoment.js"></script>
+    <script src="../lib/react-dom.develoment.js"></script>
+    <!--使用jsx语法必须引入babel依赖-->
+    <script src="../lib/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /**
+         * 在之前我们使用API,来创建React元素,如:
+         *      React.createElement('div',{},'hello')
+         * 这种编程方式称之为命令式编程,这种方式太繁琐,不适合使用。
+         */
+
+        /**
+         * React提供了JSX语法,这种语法更为简洁,称之为声明式编程
+         * 什么是JSX?
+         *      JSX是JavaScript的语法扩展,使得我们可以类似于HTML的形式来使用JS。
+         *      JSX也是React中声明式编程的体现。
+         *
+         *
+         * 简而言之,就是通过`render()`函数 我们可以直接使用html语法编写元素模板,,React会通过babel将jsx语法转换为普通的声明式编程语法
+         * 注意: 如果要使用jsx语法,必须引入babel依赖,并且脚本的`type`类型必须为`text/babel`
+         */
+
+        // 创建根元素,并且往根元素中渲染一个h1标签
+        ReactDOM.createRoot(document.querySelector('#root')).render(<h1>Hello React</h1>)
+
+        const div = <h1>JSX不是字符串,不要加引号</h1>
+    </script>
+
+</body>
+</html>
