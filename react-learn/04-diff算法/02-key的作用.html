@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Key的作用</title>
+</head>
+<!--导入依赖-->
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+<div id="root"></div>
+<button id="btn">改变数据</button>
+
+<script type="text/babel">
+  const names = ['海问香',"满城雪",'蛮小满']
+  const root = ReactDOM.createRoot(document.querySelector("#root"));
+  // 渲染列表
+  root.render(<ul>
+    {names.map(item=><li key={item}>{item}</li>)}
+  </ul>)
+
+  // 绑定点击事件
+  document.getElementById('btn').onclick = ()=> {
+    const newNames = ['林逸',...names]
+    root.render(<ul>
+      {newNames.map(item=> <li key={item}>{item}</li>)}
+    </ul>)
+  }
+
+
+
+</script>
+</body>
+</html>

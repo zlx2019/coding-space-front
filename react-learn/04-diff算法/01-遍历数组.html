@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渲染列表数据</title>
+</head>
+<!--导入依赖-->
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // 创建要渲染的数据列表
+    const names = ['海问香',"满城雪",'蛮小满']
+    const root = ReactDOM.createRoot(document.querySelector("#root"));
+    // 渲染列表
+    root.render(<ul>
+      {names.map(item=><li>{item}</li>)}
+    </ul>)
+  </script>
+
+</body>
+</html>
