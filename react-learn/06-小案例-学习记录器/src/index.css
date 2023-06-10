@@ -1,0 +1,91 @@
+/*基本样式*/
+* {
+    box-sizing: border-box;
+}
+
+/*body样式*/
+body {
+    /*背景颜色*/
+    background-color: #DFDFDF;
+    margin: 0;
+}
+
+/*container 容器样式*/
+.container {
+    /* 高度 */
+    width: 800px;
+    /* 背景颜色*/
+    background-color: #EAE2B7;
+    /* 水平居中 */
+    margin: 50px auto;
+    /* 四边圆角 */
+    border-radius: 12px;
+    /* 四边的阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* 内边距 上下左右均为20px*/
+    padding: 20px;
+}
+
+/* item 组件样式*/
+.item{
+    /* 背景颜色 */
+    background-color: #FCBF49;
+    /* 四边圆角 */
+    border-radius: 12px;
+    /* 四边的阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* 开启flex布局 弹性盒 */
+    display: flex;
+    /* 边距 上下为16px */
+    margin: 16px;
+    padding: 6px;
+}
+
+/* 左边部分结构样式 */
+.left{
+    /* 宽度 */
+    width: 90px;
+    background-color: #fff;
+    /*圆角*/
+    border-radius: 10px;
+    /* 字体加粗 */
+    font-weight: bold;
+    /* 字体水平居中 */
+    text-align: center;
+    /* 隐藏子元素溢出的内容 */
+    overflow: hidden;
+}
+/* 月份样式 */
+.left .month{
+    height: 30px;
+    /*文字垂直居中*/
+    line-height: 30px;
+    background-color: #D62828;
+}
+.left .day {
+    /*盒子高度*/
+    height: 60px;
+    /*与盒子高度一致 垂直居中*/
+    line-height: 60px;
+    font-size: 50px;
+}
+
+/* 右半部分结构样式 */
+.right{
+    /* 自动占满flex布局剩余的空间 */
+    flex: auto;
+    /* 文字水平居中 */
+    text-align: center;
+    /*字体宽度*/
+    font-weight: bold;
+}
+
+/*title样式*/
+.right .title{
+    font-size: 16px;
+    color: #194B49;
+}
+/*时长样式*/
+.right .times{
+    color: #D62828;
+}
