@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影列表</title>
+</head>
+<!-- 引入依赖 -->
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+    /**
+     * 定义组件
+     */
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                // 电影列表
+                movies: ['星际穿越','侏罗纪公园'],
+                // 高亮显示样式
+                highStyle: {color: 'red'},
+                // 当前高亮元素索引
+                currentIndex: 0,
+                //输入内容
+                inputText: ''
+            }
+        }
+
+        /**
+         * 添加电影
+         */
+        addMovie = () =>{
+            this.setState(prevState=> ({
+                movies: [...prevState.movies,this.state.inputText],
+                inputText: '',
+                currentIndex: this.state.movies.length
+            }))
+        }
+        /**
+         * 输入框监听变动事件
+         * @param event 事件
+         */
+        inputChange = (event) =>{
+            this.setState({inputText: event.target.value})
+        }
+
+        /**
+         * 点击电影,更改高亮
+         * @param index
+         */
+        movieClick = (index) =>{
+            this.setState({currentIndex: index})
+        }
+
+        render() {
+            // 解构
+            const {movies,currentIndex,highStyle,inputText} = this.state
+            return (
+                <div>
+                    {/*添加电影按钮*/}
+                    <button onClick={()=> this.addMovie()}>添加电影</button>
+
+                    {/*输入框*/}
+                    <input type="text" value={inputText} onKeyPress={()=> this.addMovie()} onChange={(e)=> this.inputChange(e)}/>
+
+                    {/*渲染列表*/}
+                    <ul>
+                        {movies.map((item,index)=>
+                            <li
+                                // 动态设置样式
+                                style={currentIndex === index ? highStyle : {}}
+                                // 设置点击事件
+                                onClick={()=> this.movieClick(index)}
+                                key={item}
+                            >{item}
+                            </li>)}
+                    </ul>
+                </div>
+            )
+        }
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+
+</script>
+</body>
+</html>

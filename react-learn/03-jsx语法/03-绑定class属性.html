@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+    //1. 定义类组件
+    class App extends React.Component {
+        constructor() {
+            super()
+            // 定义动态属性
+            this.state = {}
+        }
+
+        render() {
+            // 解构
+            const {} = this.state
+            return (
+                <div>
+                    {/* 动态绑定class属性*/}
+                    <h1 className={'home index'}>哈哈哈</h1>
+                    {/* 动态绑定style属性*/}
+                    <h1 style={{color:'red',fontSize: '16px'}}>呵呵呵</h1>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+
+</script>
+</body>
+</html>

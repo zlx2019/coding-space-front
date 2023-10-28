@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>书籍购物车</title>
+</head>
+
+<style>
+  /*边框合并在一起*/
+  table{
+    border-collapse: collapse;
+  }
+  /*表格设置边框*/
+  td,th{
+    padding: 10px 16px;
+    border: 1px solid #aaa;
+  }
+</style>
+
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Cart extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {
+                books : [
+                    {}
+                ]
+            }
+        }
+
+        render(){
+            return(
+                <div>
+                    <table>
+                      {/*表格首行*/}
+                      <thead>
+                        <tr>
+                          <th>序号</th>
+                          <th>书籍名称</th>
+                          <th>出版日期</th>
+                          <th>价格</th>
+                          <th>购买数量</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                    </table>
+                </div>
+            )
+        }
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Cart/>)
+</script>
+</body>
+</html>

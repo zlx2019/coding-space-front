@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        /**
+         * 在Vue中,对一个元素进行属性动态绑定,需要通过`v-bind`属性或者`:`语法糖来设置。
+         * 而在React中可以直接通过属性名进行设置
+         */
+
+        //1. 定义类组件
+        class App extends React.Component{
+            constructor() {
+                super()
+                // 定义动态属性
+                this.state = {
+                    title: '我是title属性的值',
+                    imgUrl: 'https://bing.com/th?id=OHR.SmokyFireflies_ZH-CN3840923626_1920x1080.jpg',
+                    baiduHref: 'https://www.baidu.com'
+                }
+            }
+            render(){
+                // 解构
+                const {title,imgUrl,baiduHref} = this.state
+                return(
+                    <div>
+                        {/* 动态绑定元素的`title`属性 */}
+                        <h2 title={title}>Hello</h2>
+                        {/* 动态绑定元素的`href`属性 */}
+                        <a href={baiduHref}>点击我跳转到百度</a>
+                        {/* 动态绑定元素的`src`属性 */}
+                        <img src={imgUrl} alt=""/>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+
+    </script>
+</body>
+</html>

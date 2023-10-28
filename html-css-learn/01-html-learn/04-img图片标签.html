@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片标签</title>
+</head>
+<body>
+<!--
+    图片标签,用来向页面中插入图片,使用<img>标签
+    支持的图像格式
+      - apng 无损动画序列的不错选择（GIF 性能较差）。
+      - avif 静态图像或动画的不错选择，其性能较好。
+      - gif  简单图像和动画的不错选择。
+      - jpeg 有损压缩静态图像的不错选择（目前最流行的格式）。
+      - png  对于无损压缩静态图像而言是不错的选择（质量略好于 JPEG）。
+      - svg 矢量图像格式。用于必须以不同尺寸准确描绘的图像。
+      -webp 图像和动画的绝佳选择。
+
+    属性详解:
+      - src: 图片资源。可以是一个本地路径,也可以是一个http地址
+      - alt: 对图像的备用文本描述。
+      - width: 图片的宽度
+      - height: 图片的高度
+      - loading: 指示浏览器应当如何加载该图像
+          - eager： 立即加载图像，不管它是否在可视视口（visible viewport）之外（默认值）。
+          - lazy: 延迟加载图像，直到它和视口接近到一个计算得到的距离（由浏览器定义）。
+
+-->
+<img src="./img/Go-logo1.jpeg" alt="Go的logo" width="200px" height="200px" loading="">
+
+</body>
+</html>

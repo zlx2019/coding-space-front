@@ -1,10 +1,15 @@
 import ReactDOM from 'react-dom/client'
-import {Home} from "./03-state数据/Home";
 
+// 导入组件
+import {App,Home} from './App'
+import {User} from './User'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// 渲染组件
 root.render(
     <>
+        <App/>
         <Home/>
+        <User/>
     </>
 )

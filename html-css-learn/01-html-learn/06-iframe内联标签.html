@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe的使用</title>
+</head>
+<style>
+    #root {
+        color: red;
+    }
+</style>
+<body>
+<!--
+        iframe标签,用来在一个网页中,引入另一个网页。
+        属性详解:
+            - src: 被嵌套的页面。可以是路径或者网络地址.
+            - srcdoc: 该属性是一段 HTML 代码，这些代码会被渲染到 iframe 中。如果浏览器不支持 srcdoc 属性，则会渲染 src 属性表示的内容。
+                      如果不想嵌套一个页面,直接嵌套一部分html元素的话可以将内容写到这里.
+            - width: 宽度,默认是300px
+            - height: 高度,默认值为150。
+-->
+
+
+<!--
+嵌入一个本地页面,并且使用srcdoc指定嵌套的内容
+-->
+<iframe title="哈哈哈" src="02-网页的标准结构.html" srcdoc="
+<h1>aaa</h1><h1>aaa</h1><h1>aaa</h1><h1>aaa</h1>
+" width="600px" ></iframe>
+
+
+<!--
+嵌入一个网络页面,指定宽高
+-->
+<iframe
+        src="https://example.org"
+        title="iframe Example 1"
+        width="400"
+        height="300">
+</iframe>
+
+<iframe src="https://lilichao.com" frameborder="0"></iframe>
+</body>
+</html>

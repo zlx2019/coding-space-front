@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影列表</title>
+</head>
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    // 定义组件
+    function App() {
+        // 定义电影列表
+        const [movies,setMovies] = React.useState(['星际穿越'])
+        // 定义高亮索引
+        const [currentIndex,setCurrentIndex] = React.useState(0)
+        // 定义文本框输入内容
+        const [movie,setMovie] = React.useState('')
+
+        /**
+         * 添加电影事件
+         */
+        const addMovies = () =>{
+            if (!movie.trim()){
+                return
+            }
+            setMovies(prevMovies=> [...prevMovies,movie])
+            setMovie('')
+        }
+
+        /**
+         * 文本框变动监听事件
+         * @param event
+         */
+        const changeMovie = (event)=> {
+            setMovie(event.target.value)
+        }
+
+        /**
+         * 点击电影,更改高亮
+         * @param index
+         */
+        const clickMovie = (index)=> {
+            setCurrentIndex(index)
+        }
+
+        return (
+            <div>
+                <button onClick={addMovies}>添加电影</button>
+                <input type="text" value={movie} onChange={changeMovie}/>
+
+                <ul>
+                    {movies.map((item,index)=>
+                        <li
+                            key={item}
+                            onClick={()=> clickMovie(index)}
+                            style={currentIndex === index ? {color: 'red'} : {}}
+                        >
+                            {item}
+                        </li>)}
+                </ul>
+            </div>
+        )
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+</script>
+</body>
+</html>

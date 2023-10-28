@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接</title>
+</head>
+<body>
+<!--
+    通过超链接跳转至另一个页面,或者跳转到一个指定的元素位置
+    超链接使用<a>标签定义
+
+    属性详解:
+      href: 要跳转到的位置,可以是一个本地路径,也可以是一个网络资源路径
+      target: 跳转的方式
+         _self：在当前标签页打开(默认)
+         _blank: 打开一个新的标签页
+         _parent: 在当前窗口打开
+
+
+
+-->
+
+<!--跳转到外部网站-->
+<a href="https://www.baidu.com" target="_blank">打开百度页面</a>
+
+
+<!--跳转到内部网站-->
+<a href="./02-网页的标准结构.html" target="_blank">内部跳转</a>
+
+
+<!--设置一个id为top的元素-->
+<p id="top">你好啊</p>
+<!--通过超链接 跳转到id为target的元素位置-->
+<a href="#top">回到上边</a>
+
+
+</body>
+</html>

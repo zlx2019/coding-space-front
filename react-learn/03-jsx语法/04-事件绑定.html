@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../lib/react.develoment.js"></script>
+<script src="../lib/react-dom.develoment.js"></script>
+<script src="../lib/babel.min.js"></script>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+    /**
+     * 使用React绑定事件 并且解决this指向的解决方案
+     */
+
+    class App extends React.Component {
+
+        // 方法1
+        btnClick1(){
+            console.log(this)
+        }
+
+        // 方法2
+        btnClick2 = () =>{
+            console.log(this)
+        }
+
+        // 方法3
+        btnClick3(){
+            console.log(this)
+        }
+
+        // 方法4,接收一个默认的事件参数,和两个自定义参数
+        btnClick4(event,name,age){
+            console.log(event,name,age)
+        }
+
+        render() {
+            return (
+                <div>
+                    {/*方案1: 注册事件毁掉和时,通过bind绑定this*/}
+                    <button onClick={this.btnClick1.bind(this)}>按钮1-触发方法1</button>
+
+                    {/*方案2: 将方法定义为箭头函数,使其不断指向上层作用域this*/}
+                    <button onClick={this.btnClick2}>按钮2-触发方法2</button>
+
+                    {/*方案3: 注册一个箭头函数,在函数内部直接调用方法 (推荐使用该方法,更适合传参) */}
+                    <button onClick={()=> this.btnClick3()}>按钮3-触发方法3</button>
+
+                    <button onClick={(event)=> this.btnClick4(event,'张三',18)}>按钮4-传递事件和参数</button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+</script>
+</body>
+</html>
