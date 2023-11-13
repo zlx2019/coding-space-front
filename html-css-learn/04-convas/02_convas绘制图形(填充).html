@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        id: 元素ID
+        width: 画布的宽度
+        height: 画布的高度
+     -->
+    <canvas id="canvas" width="800" height="800">
+        您的浏览器不支持canvas，请下载最新的浏览器，或者请联系面试者.
+        <a href="https://www.google.com/intl/zh-CN/chrome/"></a>
+
+    </canvas>
+
+    <script>
+        window.onload = function(){
+            //1. 获取canvas DOM元素
+            const canvas = document.getElementById('canvas')
+            console.log("%O",canvas);
+
+            if (!canvas.getContext){
+                console.log("该浏览器不支持canvas.")
+                return
+            }
+            // 2. 获取canvas的绘图上下文
+            const context = canvas.getContext('2d') // 2d | webgl
+            console.log(context);
+
+            // 3. 绘制图形,向画布中填充一个矩形
+            // (x,y,height，width)
+            // (画在x轴的位置,画在y轴的位置,矩形的高度(px)，矩形的宽度(px))
+            // 在画布左上边角位置画出矩形，并且内部像素全部填充
+            context.fillRect(0,0,100,100)
+
+            // 这一步可以拆分为两步
+            // 1. 设置路径，注意如果是设置路径，那么将不会有任何颜色显示
+            context.rect(150,150,200,200)
+            // 2.填充颜色，默认都是填充黑色
+            context.fill()
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex justify content</title>
+</head>
+<style>
+    .container{
+        width: 500px;
+        height: 400px;
+        background-color: #EAE2B7;
+        /*开启flex布局*/
+        display: flex;
+        /*
+           flex container的 justify-content属性用于设置 flex item 在 flex container中的对齐方式
+           可选值:
+            - left: 向左对齐
+            - right: 向右对齐
+            = center: 居中对齐
+            - flex-start(默认值): 与主轴方向起点对齐
+            - flex-end: 与主轴方向结束点对齐
+
+            - space-between:
+                1. 首个item与main start对齐，末尾item与 main end对齐
+                2. 如果item不够，则每个item隔开，间隔距离相等
+
+            - space-evenly: item进行隔开，相隔距离等分;
+
+            - space-around: item进行隔开，相隔距离等分，并且两边空隙为item之间的空隙2/1;
+
+         */
+        justify-content: space-evenly;
+    }
+    .item{
+        width: 120px;
+        height: 120px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+</div>
+
+<script src="util.js"></script>
+</body>
+</html>

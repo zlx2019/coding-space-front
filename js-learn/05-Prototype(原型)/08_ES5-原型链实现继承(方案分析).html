@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链实现继承的方案</title>
+</head>
+<body>        
+     <script>
+        // 在上一个案例中,我们使用 组合 + 借用的方式实现了继承
+        // 但是这种方式缺点太多，所以不推荐使用，提供一些其他方案
+
+        function Person(){}
+        function Student(){}
+
+        // 方案一: 使用空对象作为媒介
+        var obj = {}
+        Object.setPrototypeOf(obj,Person.prototype)
+        Student.prototype = obj
+
+        // 方案二: 使用空函数作为中间媒介
+        function F(){}
+        F.prototype = Person.prototype
+        Student.prototype = new F()
+
+        // 方案三: 使用Object.create(val)函数，创建一个新对象，该对象会将val作为隐式原型
+        // var obj =  Object.create(Person.prototype)
+        // console.log(obj.__proto__ === Person.prototype); // true
+        // Student.prototype = obj
+        
+        // 这就是我们最终的方案，通常我们会封装成一个工具函数
+        /**
+         * childType: 子类类型
+         * superType: 父类类型
+         */
+        function inherit(childType,superType){
+            // 创建一个对象，对象的[[prototype]] 指向 superType的prototype
+            // 再将子类的 prototype 指向找个对象
+            childType.prototype = Object.create(superType.prototype)
+            // 为子类的prototype 添加 constructor属性，并且指向子类构造函数
+            Object.defineProperty(childType.prototype,"constructor",{
+                enumerable: false,
+                configurable: true,
+                writable: true,
+                value: childType
+            })
+        }
+        // 绑定原型
+        inherit(Student,Person)
+     </script>
+</body>
+</html>

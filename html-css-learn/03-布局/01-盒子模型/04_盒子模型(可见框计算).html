@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            /* 
+                box-sizing属性可选值和作用
+                    - content-box 默认值，表示width和height设置的是盒子内容区的宽高
+                    - border-box 表示width和height设置的是盒子的可见框总大小(内容区+内边距+边框)
+                        内容区会随着 内边距、边框的增大而自动缩小，将总大小固定；
+            */
+            box-sizing: border-box;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+
+            border: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

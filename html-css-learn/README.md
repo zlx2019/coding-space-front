@@ -16,8 +16,3 @@
     > **行为**就是网页与用户的交互操作。使用`JavaScript`语言来描述网页的**行为**。
 
 分享一个权威的学习指南: [MDN Web Docs](https://developer.mozilla.org/en-US/)
-
-## 3.HTML
-> HTML(Hyper Text Markup Language)超文本标记语言是Web最基本的构建块。它定义了 Web 内容的含义和结构。
-
-学习HTML就是学习各种常用的标签元素。

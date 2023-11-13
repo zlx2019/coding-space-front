@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素属性的通用操作</title>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <!-- 
+        对于元素的所有attribute访问都支持的方法:
+            hasAttribute(name) - 检查该属性是否存在
+            getAttribute(name) - 获取属性的值
+            setAttribute(name,value) - 设置属性的值
+            removeAttribute(name) - 移除这个属性
+     -->
+     <script>
+        var elem = document.querySelector('.box1')
+        // 判断 class 属性是否已存在
+        if(elem.hasAttribute('class')){
+            console.log('box1 已经存在class属性');
+        }
+        // 获取name属性
+        console.log(elem.getAttribute('name')); // null
+        // 设置name属性
+        elem.setAttribute('name','boxName')
+        console.log(elem.getAttribute('name')); // boxName
+        // 移除name属性
+        elem.removeAttribute('name')
+
+        // 需要注意，通过getAttribute() 获取到的值，都是字符串类型
+     </script>
+</body>
+</html>

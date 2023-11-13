@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<!--
+    id: 元素ID
+    width: 画布的宽度
+    height: 画布的高度
+ -->
+<canvas id="canvas" width="800" height="800">
+    您的浏览器不支持canvas，请下载最新的浏览器，或者请联系面试者.
+    <a href="https://www.google.com/intl/zh-CN/chrome/"></a>
+</canvas>
+
+<script>
+    window.onload = function(){
+        //1. 获取canvas DOM元素
+        const canvas = document.getElementById('canvas')
+        // 2. 获取canvas的绘图上下文
+        const context = canvas.getContext('2d') // 2d | webgl
+
+        // 3.绘制一个矩形路径(边框)
+        // 不会进行内部的所有像素进行填充
+        context.fillRect(100,100,300,300)
+
+        // 4. 通过定时函数，动态一行一行清除画布的像素块
+        let height = 1
+        let clearTask = setInterval(()=>{
+            context.clearRect(0,height,canvas.clientWidth,1)
+            console.log(0,height,canvas.clientWidth,1)
+            height++
+            if (height > canvas.clientHeight){
+                clearInterval(clearTask)
+            }
+        },5)
+    }
+</script>
+</body>
+</html>

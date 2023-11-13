@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格布局-网格之间的间距</title>
+</head>
+<style>
+    .container{
+        width: 800px;
+        border: 10px #333 solid;
+        margin: auto;
+        padding: 20px;
+
+        /*设置为 grid布局*/
+        display: grid;
+        /*如下 设置grid基础布局为 4行4列*/
+        grid-template-rows: repeat(4,200px);
+        grid-template-columns: repeat(4,1fr);
+
+        /*
+            grid-column-gap: 设置列与列之间的间距
+            grid-row-gap: 设置行与行之间的间距
+         */
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        /* 同时指定网格的行间距和列间距 */
+        grid-gap: 20px 20px;
+
+    }
+
+</style>
+<body>
+
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+<script src="../04-flex布局/util.js"></script>
+</body>
+</html>

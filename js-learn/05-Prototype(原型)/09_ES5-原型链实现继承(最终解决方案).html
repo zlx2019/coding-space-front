@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最终的解决方案</title>
+</head>
+<body>
+    <script>
+
+        // 最终的解决方案 被称之为 寄生式函数，只是考虑兼容性问题，特意写了两种方案
+
+        function Person(){}
+        function Student(){}
+
+        // 最终的解决方案一(可能某些浏览器不兼容)
+        // 将子类隐式原型指向父类显示原型 工具函数
+        function inherit(ChildType,SuperType){
+            ChildType.prototype = Object.create(SuperType.prototype)
+            Object.defineProperty(ChildType.prototype,"constructor",{
+                enumerable: false,
+                configurable: true,
+                writable: true,
+                value: ChildType
+            })
+        }
+        inherit(Student,Person)
+        
+        // 最终的解决方案(兼容所有浏览器)
+        // 1. 创建一个临时对象，使用空函数作为中间媒介
+        function createObject(obj){
+            function F(){}
+            F.prototype = obj
+            return new F()
+        }
+        // 将子类隐式原型指向父类显示原型 工具函数
+        function inherit2(ChildType,SuperType){
+            ChildType.prototype = createObject(SuperType.prototype)
+            Object.defineProperty(ChildType.prototype,"constructor",{
+                enumerable: false,
+                configurable: true,
+                writable: true,
+                value: ChildType
+            })
+        }
+        inherit2(Student,Person)
+    </script>
+    
+</body>
+</html>

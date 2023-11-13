@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格布局-网格的对齐方式2</title>
+</head>
+<style>
+    .container{
+        height: 800px;
+        width: 800px;
+        border: 10px #333 solid;
+        margin: auto;
+
+        /*设置为 grid布局*/
+        display: grid;
+        /*布局为3列*/
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: 200px 200px;
+
+        /*
+            justify-items: 设置 grid item 的水平对齐方式
+            align-items: 设置 grid item 的垂直对齐方式
+         */
+        justify-items: center;
+        align-items: center;
+    }
+    .item{
+        border: 1px red solid;
+    }
+    .item1{
+        /*
+            justify-self: 设置item自身元素的水平对齐方式
+            align-self: 设置item自身元素的垂直对齐方式
+            优先级高于 grid container中设置的justify-items和align-items
+         */
+        /*设置当前item 对齐方式为左上角*/
+        justify-self: start;
+        align-self: start;
+    }
+    .item2{
+        /*设置当前item 水平垂直居中对齐*/
+        justify-self: center;
+        align-self: center;
+    }
+    .item3{
+        /*设置当前item 对齐方式为右上角*/
+        justify-self: end;
+        align-self: start;
+    }
+    .item4{
+        /*设置当前 item 对齐方式为左下角*/
+        justify-self: start;
+        align-self: end;
+    }
+    .item6{
+        /*右下角*/
+        justify-self: end;
+        align-self: end;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+    <div class="item item4">item4</div>
+    <div class="item item5">item5</div>
+    <div class="item item6">item6</div>
+</div>
+<!--<script src="../04-flex布局/util.js"></script>-->
+</body>
+</html>

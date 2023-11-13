@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex wrap</title>
+</head>
+<style>
+    .container{
+        width: 500px;
+        height: 400px;
+        background-color: #EAE2B7;
+        /*开启flex布局*/
+        display: flex;
+        /*设置主轴排布方向*/
+        flex-direction: row;
+        /*
+            默认情况下，flex会根据item的数量自动进行压缩，使所有的item不会随着数量而溢出，
+            但是这种情况下会将item的宽度或高度不停的缩小，某些情况下我们不希望改变item的大小，
+            这个时候就需要将多余的item排布到交叉轴的下一行或列;
+            flex-wrap 属性决定了flex container 排布item时，是单行还是多行
+                - nowrap(默认): 单行，一旦item数量过大，超过container的大小，则会将item的大小进行缩小
+                - wrap: 多行，将多余的item，排布为多行或者多列
+                - wrap-reverse: 反向多行
+        */
+
+        /*设置item多行排布*/
+        flex-wrap: wrap;
+
+        /* flex-direction 和 flex-wrap 两个属性可以使用 flex-flow来简写
+            同时指定两个属性
+        */
+        flex-flow: row wrap;
+
+    }
+
+    .item{
+        width: 120px;
+        height: 120px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+    <div class="item">item5</div>
+    <div class="item">item6</div>
+</div>
+
+<script src="util.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 内容区和边框之间的距离称为内边距 */
+        .box1{
+            /* 设置盒子内容区样式 */
+            height: 200px;
+            width: 200px;
+            background-color: aquamarine;
+
+            /* 设置盒子边框样式 */
+            border: 10px red solid;
+
+            /* 
+                设置盒子的内边距样式，内边距分为四个方向:
+                    - paading-top 上
+                    - paading-bottom 下
+                    - paading-left 左
+                    - paading-right 右
+             */
+             /* 设置四边内边距 */
+            padding: 20px;
+            
+            /* 设置一个内部盒子，占满box1的内容区，以便看到box1的内边距 */
+            .box2{
+                height: 100%;
+                width: 100%;
+                background-color: antiquewhite;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+</div>    
+</body>
+</html>

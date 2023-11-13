@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重写函数的原型对象</title>
+</head>
+<body>
+    <script>
+        // 定义一个函数
+        function Person(){
+
+        }
+
+        // 重写Person的prototype 显示原型
+        Person.prototype = {
+            message: "Hello World!",
+            name: "张三",
+            running: function(){},
+            // 重写的原型对象没有 constructor属性，需要手动添加
+            // constructor: Person
+        }
+
+        var p1 = new Person()
+        console.log(p1.message); // Hello World!
+        console.log(p1.name);    // 张三
+        console.log(p1.constructor); // ƒ Person(){}
+
+        // 但是这种写法，有些不严谨，这种方式会将constructor当做Person的一个实际属性
+        console.log(Object.keys(Person.prototype)); // ['message', 'name', 'running', 'constructor']
+        // 更推荐如下的写法
+        Object.defineProperty(Person.prototype,"constructor",{
+            value: Person
+        })
+        console.log(Object.keys(Person.prototype)); // ['message', 'name', 'running', 'constructor']
+        console.log(Person.prototype); // {message: 'Hello World!', name: '张三', running: ƒ, constructor: ƒ}
+    </script>
+    
+</body>
+</html>

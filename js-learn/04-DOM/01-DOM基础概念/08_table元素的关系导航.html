@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格元素导航</title>
+</head>
+<body>
+    <!-- 高级元素 table -->
+    <table border>
+        <!-- 表格头部 -->
+        <thead>
+            <!-- 表格首行 -->
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <!-- 表格主体 -->
+        <tbody>
+            <!-- 表格多行内容 -->
+            <tr>
+                <td>zero</td>
+                <td>18</td>
+                <td>188</td>
+            </tr>
+            <tr>
+                <td>zero</td>
+                <td>18</td>
+                <td>188</td>
+            </tr>
+            <tr>
+                <td>zero</td>
+                <td>18</td>
+                <td>188</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 1. 获取table 元素
+        var tableElem = document.body.firstElementChild
+        // 2. 获取table的头部子元素
+        var tableHeadElem = tableElem.tHead
+        console.log(tableHeadElem);
+        // 3. 获取table的 主体子元素列表
+        var tableBodyElems = tableElem.tBodies
+        console.log(tableBodyElems);
+
+        // 4. 获取table的所有行元素
+        var rows = tableElem.rows
+        console.log(rows);
+    </script>
+</body>
+</html>

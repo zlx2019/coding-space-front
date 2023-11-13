@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的原型链</title>
+    <!-- 
+        Js中，通过原型链来实现类继承，通过原型指向另一个对象(父类)
+        
+     -->
+</head>
+<body>
+    <script>
+        // 1.在js中，{}的本质，其实就是 new Object()
+        var info = {}
+        // 完全等同于 var info = new Object()
+        // 所以 info的隐式原型 就是 Object的显示原型
+        console.log(Object.getPrototypeOf(info) === Object.prototype); // true
+        // 并且 Object的原型为null，相当于原型链的最顶层
+        console.log(info.__proto__.__proto__); // null
+
+        // 2. 原型链，多个对象之间，依次通过原型指向，形成一条链条，如下
+        var obj1 = {
+            "message": "我是obj1"
+        }
+        var obj2 = {}
+        obj2.__proto__ = obj1
+        var obj3 = {}
+        obj3.__proto__ = obj2
+
+        // 当这三个对象形成原型链之后，我们就可以通过最下层的对象，往上依次寻找，获取到上层对象的数据;
+        console.log(obj3.message); // 我是obj1
+
+    </script>
+</body>
+</html>

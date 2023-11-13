@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+        需要注意的是，盒子的垂直方向(上下)外边距,相邻的两个外边距会产生重叠
+        如下两个盒子,分别设置 box1 的下外边距和 box2的 上外边距各为 100px
+        那么实际上这两个盒子上下相隔还是100px
+        这种情况下，会取其中的一个最大值，假如box1的下外边距为 150px，那么就相隔150px
+    */
+    .box1{
+        width: 200px;
+        height: 200px;
+        background-color: antiquewhite;
+
+        margin-bottom: 150px;
+    }
+    .box2{
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+        margin-top: 100px;
+    }
+
+</style>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

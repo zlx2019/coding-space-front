@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(){}
+        function foo(){}
+
+        // 手动向Object(顶级父类)的原型中添加属性
+        Object.prototype.message = "Custom Message"
+        var stu = new Student()
+        console.log(stu.message); // Custom Message
+        
+        // 一个函数也是Object对象，自然也可以访问到 message
+        console.log(foo.message); // Custom Message
+
+    </script>
+</body>
+</html>

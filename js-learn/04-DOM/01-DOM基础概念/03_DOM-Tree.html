@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Tree</title>
+</head>
+<body>
+    <!-- 
+        所谓 DOM Tree，就是n多个DOM对象，组成一个又一个节点，最终形成的一颗树结构.
+        一个页面不只有html、head、body等元素，也包含很多子元素.
+        如 html元素下有 head、body
+        而body下又有很多子元素，一套嵌一套，最终形成的一种结构，被称为 DOM Tree
+     -->
+     <div class="box1"></div>
+     <div class="box2"></div>
+     <div class="box3"></div>
+
+     <script>
+        // 获取 body 元素
+        var bodyElem =  document.body
+
+        // 获取body元素的第一个子元素， box1
+        var box1Elem = bodyElem.children[0]
+        console.log(box1Elem.className); // box1
+
+        var box3Elem = bodyElem.children[2]
+        console.log(box3Elem.className); // box3
+
+     </script>
+</body>
+</html>

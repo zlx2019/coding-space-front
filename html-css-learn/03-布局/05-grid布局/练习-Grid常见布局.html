@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid常用布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /*标题样式*/
+        .head-title{
+            /*水平居中*/
+            text-align: center;
+            color: #555;
+            font-size: 26px;
+            padding: 30px 0;
+        }
+
+        /*flex 容器样式*/
+        .container{
+            width: 80%;           /*容器宽度*/
+            background-color: #fff;/*背景颜色*/
+            border-radius: 10px;    /*圆角*/
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);/*阴影*/
+            margin:  auto;/*水平居中*/
+            padding: 30px;
+
+            /* 网格 布局*/
+            display: grid;
+            /*设置网格布局的 列数与大小 4列均分*/
+            /*grid-template-columns: 1fr 1fr 1fr 1fr;*/
+
+            /*设置布局的列为响应式，大小自动填充，小于260px时，则减少每行的网格数*/
+            grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+            /*设置网格之间的间距*/
+            grid-gap: 20px;
+            /* 设置每行网格的高度 */
+            grid-auto-rows: 200px;
+        }
+        /*flex item样式*/
+        .container .item{
+            border-radius: 8px;
+            /*height: 200px;*/
+            /*每个网格也使用 grid布局，让内容居中*/
+            display: grid;
+            /*水平居中*/
+            justify-content: center;
+            /*垂直居中*/
+            align-content: center;
+        }
+        /*指定首个item，行和列占两个网格*/
+        .item1{
+            grid-row: span 2;
+            grid-column: span 2;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="head-title">Grid布局</div>
+    <div class="container">
+        <div class="item item1">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+        <div class="item">item6</div>
+        <div class="item">item7</div>
+        <div class="item">item8</div>
+        <div class="item">item9</div>
+        <div class="item">item10</div>
+        <div class="item">item11</div>
+        <div class="item">item12</div>
+        <div class="item">item13</div>
+        <div class="item">item14</div>
+        <div class="item">item15</div>
+        <div class="item">item16</div>
+        <div class="item">item17</div>
+        <div class="item">item18</div>
+        <div class="item">item19</div>
+        <div class="item">item20</div>
+    </div>
+<script src="../04-flex布局/util.js"></script>
+</body>
+</html>

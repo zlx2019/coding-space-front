@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位实现水平垂直居中</title>
+    <style>
+        /* 容器盒子样式 */
+        .box1{
+            height: 500px;
+            width: 500px;
+            border: 10px red solid;
+            /* 开启定位，作为box2的 包含块*/
+            position: relative;
+        }
+        .box2{
+            height: 200px;
+            width: 200px;
+            background-color: #EAE2B7;
+            /*  开启绝对定位，通过绝对定位实现水平和垂直居中  */
+            position: absolute;
+            /* 四条外边距全部设置为自动计算 */
+            margin: auto;
+            /*
+            当外边距都是自动计算时，
+                左右设置为0,则会水平居中
+                上下设置为0,则会垂直居中
+            */
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+</div>
+</body>
+</html>

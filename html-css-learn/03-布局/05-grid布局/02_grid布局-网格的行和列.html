@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格布局中的行跟列</title>
+</head>
+<style>
+    .container{
+        width: 800px;
+        border: 10px #333 solid;
+        margin: auto;
+        /*设置为 grid布局*/
+        display: grid;
+
+        /*设置grid的列数为4列，每列200px*/
+        /*grid-template-columns: 200px 200px 200px 200px;*/
+        /*可以使用 fr单位进行均分，共四列，共4fr，每份占1fr*/
+        /*grid-template-columns: 1fr 1fr 1fr 1fr;*/
+        /* 可以使用 repeat()函数来指定n列，每列占1fr*/
+        /*grid-template-columns: repeat(4,1fr);*/
+
+        /*设置grid的行数，其原理和columns一样*/
+        /*grid-template-rows: repeat(5,1fr);*/
+
+        /*如下 设置grid基础布局为 4行4列*/
+        grid-template-rows: repeat(4,1fr);
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .item{
+        width: 200px;
+        height: 200px;
+        border: 1px red solid;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+
+</body>
+</html>

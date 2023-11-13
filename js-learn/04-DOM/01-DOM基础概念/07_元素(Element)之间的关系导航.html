@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素之间的关系导航</title>
+</head>
+<!-- 
+    在开发中，我们通常很少根据节点(Node)来进行导航或者操作，因为节点包含的内容过多，如纯文本的换行符、注释等节点，
+    这些都是我们不常用到的，所以我们通常更多的是使用元素(Element)进行操作;
+        Element之间的关系导航
+        - 父元素: parentElement
+        - 前兄弟元素: previousElementSibling
+        - 后兄弟节点: nextElementSibling
+        - 子元素列表: children
+        - 首个子元素: firstElementChild
+        - 最后一个子元素: lastElementChild
+ -->
+<body>
+    <div class="child1">子元素1</div>
+    <div class="child2">子元素2</div>
+    <div class="child3">子元素3</div>
+
+    <script>
+        // 1. 获取body元素
+        var bodyElem = document.body
+        // 2. 获取body的所有子元素
+        var childElem = bodyElem.children
+        console.log(childElem); // [div,div,div,script]
+
+        // 3. 获取第一个子元素
+        var child1Elem = bodyElem.firstElementChild
+        console.log(child1Elem.className,child1Elem.innerHTML); // child1 子元素1
+
+        // 4. 获取下一个子元素
+        var child2Elem = child1Elem.nextElementSibling
+        console.log(child2Elem.className,child2Elem.innerHTML); // child2 子元素2
+
+        // 5. 获取最后一个子元素
+        var scriptElem = childElem[childElem.length - 1] // <script>...
+        console.log(scriptElem);
+    </script>
+</body>
+</html>

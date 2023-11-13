@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格布局中的行跟列</title>
+</head>
+<style>
+    .container{
+        border: 10px #333 solid;
+        width: 800px;
+        margin: auto;
+        /*设置为 grid布局*/
+        display: grid;
+        /*如下 设置grid基础布局为 4行4列*/
+        grid-template-rows: repeat(4,200px);
+        grid-template-columns: repeat(4,200px);
+    }
+    /*
+        grid-row-start: 设置网格项的行的起始位置
+        grid-row-end: 设置网格项的行的结束位置
+        grid-column-start: 设置网格项的列的起始位置
+        grid-column-end: 设置网格项的列的结束位置
+    */
+
+    /*设置 item1 的列 一共占据2个网格，分别是1和2位置的网格*/
+    .item1{
+      /*grid-column-start: 1;*/
+      /*grid-column-end: 3;*/
+      /*  可以简写为如下*/
+      grid-column: 1/3;
+    }
+    /*设置 item4 的列 占满一整行(4个网格)*/
+    .item4{
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+    /* 设置 item5 列占3个网格，行占2个网格(6个网格)*/
+    .item5{
+        /*grid-column-start: 1;*/
+        /*grid-column-end: 4;*/
+        /*grid-row-start: 3;*/
+        /*grid-row-end: 5;*/
+        /* 可以简写为以下*/
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+    /* 设置 item6 的行占据两个网格 */
+    .item6{
+        grid-row: span 2;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+    <div class="item item4">item4</div>
+    <div class="item item5">item5</div>
+    <div class="item item6">item6</div>
+</div>
+<script src="../04-flex布局/util.js"></script>
+</body>
+</html>

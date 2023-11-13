@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数原型中的属性</title>
+</head>
+<body>
+    <script>
+        function Person(){
+            
+        }
+        console.log(Person.prototype);
+        // 在函数的原型中，有一个 constructor 属性，从命名上可以看出指的是构造器
+        // 但是其实 它指向的其实就是自身的函数
+        console.log(Person.prototype.constructor); // ƒ Person(){}
+        console.log(Person.prototype.constructor === Person); // true
+        // 通常我们可以在实例对象中通过访问 __proto__ 访问到constructor，借此来访问函数(类)本身的信息
+        // 581 已看完
+    </script>
+    
+</body>
+</html>

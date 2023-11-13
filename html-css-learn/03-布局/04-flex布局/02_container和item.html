@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flux布局核心概念</title>
+    <style>
+        .container{
+            height: 200px;
+            width: 500px;
+            background-color: #EAE2B7;
+
+            /*
+                设置 外部div为flex布局，此时该容器则为 flex container,而内部的子元素则都视为 flex item
+            */
+            display: flex;
+
+
+        }
+        .box1{
+            height: 100px;
+            width: 100px;
+            background-color: #194B49;
+        }
+        .box2{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+        .box3{
+            height: 100px;
+            width: 100px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</div>
+
+</body>
+</html>

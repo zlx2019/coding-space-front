@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .box1{
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+        border: 5px blue solid;
+        
+        /* 
+            border-radius: 将边框的四个角设置为圆角
+            可以使用 px像素单位，也可以使用百分比
+            px 像素值越大，圆角的弧度越圆
+        */
+        border-radius: 10%;
+    }
+
+    .box2{
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+        border: 5px blue solid;
+        /* 100% 会直接形成一个圆形 */
+        border-radius: 50px;
+    }
+</style>
+<body>
+    <div class="box1"></div>    
+    <div class="box2"></div>    
+</body>
+</html>

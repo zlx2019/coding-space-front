@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex练习-导航栏</title>
+<!--使用 flex 布局实现 w3school 网页的导航栏-->
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            /* 去除 li 标签样式*/
+            list-style: none;
+        }
+
+        /* 设置 超链接样式*/
+        .nav a{
+            display: block;/* a标签设置为块元素*/
+            line-height: 48px;/*设置字体行高*/
+            text-decoration: none;/* 去除下划线*/
+            color: rgb(119,119,119);
+            font-size: 15px;
+        }
+
+        /* flex container 容器样式*/
+        .nav{
+            width: 80%;
+            height: 48px;
+            background-color: rgba(229, 227, 223,.5);
+            /*设置外边距，水平居中*/
+            margin: 70px auto;
+            /* flex布局 */
+            display: flex;
+        }
+        /*flex item 样式*/
+        .nav li{
+            flex: auto;/* 让 每个item 自动弹性伸缩*/
+            text-align: center;/*文字居中*/
+        }
+        /* 鼠标悬浮样式*/
+        .nav a:hover{
+            background-color: #000;
+            color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li><a href="#">HTML/CSS</a></li>
+        <li><a href="#">Browser Side</a></li>
+        <li><a href="#">Server Side</a></li>
+        <li><a href="#">Programming</a></li>
+        <li><a href="#">XML</a></li>
+        <li><a href="#">Web Building</a></li>
+        <li><a href="#">Reference</a></li>
+    </ul>
+</body>
+</html>

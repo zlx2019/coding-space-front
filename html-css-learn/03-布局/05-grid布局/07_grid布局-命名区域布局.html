@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用区域名称布局</title>
+</head>
+<style>
+.container{
+    border: 5px black solid;
+    /*网格布局*/
+    display: grid;
+    /*设置网格的行和列的数量与大小*/
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px 200px 200px;
+    /*水平居中*/
+    justify-content: center;
+
+    /* 使用网格的名称，进行具体化排布*/
+    /* 每个名称都占据一个网格*/
+    grid-template-areas:
+        "hd hd hd hd"
+        "sb bo bo bo"
+        "sb bo bo bo"
+        "sb bo bo bo"
+        "bt bt bt bt"
+    ;
+
+}
+.container div{
+    border: 3px tomato solid;
+}
+
+/*为每一个div元素 设置一个 grid 布局中的名称*/
+.header{
+    /*header元素名称为hd*/
+    grid-area: hd;
+}
+.sidebar{
+    grid-area: sb;
+}
+.body{
+    grid-area: bo;
+}
+.bottom{
+    grid-area: bt;
+}
+
+</style>
+
+<body>
+<div class="container">
+    <div class="header">头部</div>
+    <div class="sidebar">侧边栏</div>
+    <div class="body">内容</div>
+    <div class="bottom">底部</div>
+</div>
+</body>
+</html>

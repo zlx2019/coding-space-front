@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        var info = {
+            // 设置普通属性
+            name : "zhangsan",
+            age: 18
+        }
+        // 设置原型属性
+        info.__proto__ = {
+            address: "北京",
+            sex: '男'
+        }
+        
+        // 判断key是否存在于对象普通属性中
+        console.log(info.hasOwnProperty("name")); // true
+        console.log(info.hasOwnProperty("sex")); // false
+
+        // 判断key是否存在于对象普通属性 或者 原型中
+        console.log("name" in info); // true
+        console.log("sex" in info); // true
+
+        // for in 遍历对象的属性时，会包含原型中的所有属性
+        for(var key in info){
+            console.log(key);
+            // name
+            // age
+            // address
+            // sex
+        }
+
+        // instanceof 判断一个实例对象是否某个类对象或者派生类
+        // 判断条件: 从stu的原型链依次往上寻找
+        // 寻找原型链中的每个原型的 constructor 所指向的构造函数，是否是 instanceof 右边的目标构造函数
+        function Student(){}
+        var stu = new Student()
+        console.log(stu instanceof Student); // true
+        console.log(stu instanceof Object); // true
+        console.log(stu instanceof Array); // false
+
+    </script>
+    
+</body>
+</html>

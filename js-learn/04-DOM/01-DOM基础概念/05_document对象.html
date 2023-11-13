@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document对象</title>
+</head>
+<body>
+     <script>
+        /**
+         * document对象是整个网页(文档)在js中的抽象模型，它是一个全局实例对象;
+         * 对DOM的所有操作，都是从document对象开始的;
+         * document是DOM的入口点，从这里可以访问任何节点元素;
+         */
+
+         // 通过document拿到页面中的html、head、body标签的dom对象
+         var htmlElem = document.documentElement
+         var headElem = document.head
+         var bodyElem = document.body
+        console.log(htmlElem); // <html>...</html>
+        console.log(headElem); // <head>...</head>
+        console.log(bodyElem); // <body>...</body>
+
+         // 也可以拿到一些其他数据，例如文档类型，就是 '<!DOCTYPE html>'
+         var doctype = document.doctype
+         console.log(doctype); // <!DOCTYPE html>
+     </script>
+    
+</body>
+</html>

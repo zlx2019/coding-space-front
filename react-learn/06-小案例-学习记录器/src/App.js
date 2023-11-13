@@ -6,11 +6,11 @@ import {Item} from "./components/Item";
  * @returns {JSX.Element}
  * @constructor
  */
-export const App = () =>{
+export const App = ({notes}) =>{
     return (
         <div className="container">
             {/*使用子组件*/}
-            <Item/>
+            {notes.map((item,index) => <Item note={item} key={index}/>)}
         </div>
     )
 }

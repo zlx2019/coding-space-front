@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window全局对象</title>
+</head>
+<body>
+    <script>
+        // 在浏览器中，存在一个全局对象-window,这个对象由浏览器平台所提供
+        // 并且这个对象是最外部作用域，也就是this的顶级父类
+        console.log(this);
+        console.log(window);
+
+        // 作用一： 查找变量或函数时，最终都会在window对象中寻找,如果window中也没有，则会抛出异常 is not undefied
+        // 作用二： 将一些浏览器全局提供的变量、函数、对象，全都放在window对象中
+        // 作用三(即将弃用): 使用var 关键字定义的变量，默认会添加到window对象中，即变量提升
+        window.testName = '张三'
+        function foo(){
+            // 这里访问的 window对象中的 testName
+            console.log(testName); // 张三
+            console.log(nikename); //nikename is not defined 未找到nikename
+        }
+        // foo()
+        // 包括我们通常使用的一些浏览器内置函数，都是在window对象中的
+        // 如 alert()、confirm()
+        window.alert('1')
+        window.confirm("确定吗？")
+    </script>
+</body>
+</html>

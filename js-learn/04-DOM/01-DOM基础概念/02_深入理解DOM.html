@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深入理解DOM</title>
+</head>
+<body>
+    <!-- 
+        浏览器会对我们编写的HTML、CSS进行渲染，同时又要考虑通过JS对其进行操作，
+        于是浏览器将我们编写的HTML中的每一个标签元素(Element)在js中都抽象为了一个个对象(DOM);
+        然后就可以通过JavaScript操作这些对象，借此完成对页面的操作;
+        我们将这个 抽象的过程称之为 文档对象模型(Document Object Model)
+
+        整个页面(文档)都被抽象到 document 对象中:
+         比如document.documentElement 对应的是 html 元素
+         比如document.body 对应的是 body 元素
+         比如document.head 对应的是 head 元素
+     -->
+    
+
+     <script>
+        // 获取 html 元素
+        var html = document.documentElement
+        console.log(html);
+
+        // 获取 body 元素
+        var body = document.body
+        // 为 body 设置背景颜色为 'red'
+        body.style.backgroundColor = 'red'
+     </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的标准属性操作</title>
+</head>
+<body>
+    <div id="root" class="box" title="div的标题"
+         age="18" height="188">
+    </div>
+
+    <input class="check" type="checkbox" checked />
+
+    <input class="account" type="text" />
+    <button class="btn">设置值</button>
+
+    <script>
+        var elem = document.querySelector('.box')
+        // 元素中的标准属性，如id、name、title等属性，也属于元素中的property，就像类和类的属性一般，直接就可以获取
+        console.log(elem.id,elem.className,elem.title); // root box div的标题
+        // 但是一些非标准属性，则不能这么获取
+        console.log(elem.age,elem.height); // undefiend undefined
+        // 普通属性可以通过 getAttribute()所获取
+        console.log(elem.getAttribute('age')); // 18
+
+        // 元素的property 是有类型的，不需要通过string转换
+        if(document.querySelector('.check').checked){
+            console.log('已选中...');
+        }
+
+        // 获取 按钮 dom
+        var btnElem = document.querySelector('.btn')
+        // 绑定点击事件
+        btnElem.onclick = function(){
+            // 获取输入框 dom
+            var accountElem = document.querySelector('.account')
+            // 设置 input的 value属性值
+            accountElem.value = "userroot" // 这种方式优先级更高
+            accountElem.setAttribute('value','123456')
+            console.log(accountElem.value); // userroot
+        }
+
+    </script>
+</body>
+</html>

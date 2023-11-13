@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 在函数当中,除了arguments变量 还存在一个this变量
+    // this的指向有如下几种情况:
+    
+    // 1. 如果是一个普通函数被默认调用,那么在浏览器中指向的就是Window对象
+    function foo(){
+        console.log(this); // Window
+    }
+    foo()
+
+    // 2. 如果是一个对象的方法,那么this的指向就是这个对象实例本身
+    var obj = {
+        name: "zero",
+        running: function(){
+            console.log(this.name + " 开始 running");
+        }
+    }
+    obj.running();
+
+
+    // 3. 或者将一个普通函数 赋值给一个对象,并且由对象执行
+    function bar(){
+        console.log(this);
+    }
+    var info = {
+        name: "bar_name",
+        bar: bar
+    }
+    info.bar(); // bar_name
+    </script>
+</body>
+</html>

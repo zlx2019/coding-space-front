@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document获取元素的方式</title>
+</head>
+<body>
+    
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box">
+        <div id="root">
+            Hello
+        </div>
+        <div name="content">
+            hello
+        </div>
+        <div name="content">
+            world
+        </div>
+    </div>
+
+    <script>
+        // 方式一: 根据元素的 class名称获取DOM元素列表
+        var boxElems = document.getElementsByClassName('box')
+        console.log(boxElems.length); // 3
+
+        // 方式二: 根据元素的name属性 获取类型的所有DOM元素列表
+        var contentElems = document.getElementsByName('content')
+        console.log(contentElems.length); // 2
+
+        // 方式三: 根据元素的id 获取对应的DOM元素列表
+        var rootElem = document.getElementById('root')
+        rootElem.style.color = 'red'
+        console.log(rootElem.innerText); // Hello
+
+        // 方式四: 根据元素类型，获取该类型所有的DOM元素列表
+        var divElems = document.getElementsByTagName('div')
+        console.log(divElems.length); // 6
+
+        // 方式五： 根据自定义选择器进行DOM元素获取(最常用、最强大)
+        // 注意：通过选择器获取到的是 Node节点(列表)
+        // 获取单个元素
+        var rootDom = document.querySelector('#root')
+        console.log(rootDom.innerText); // Hello
+        // 获取多个元素
+        var elems = document.querySelectorAll('.box')
+        console.log(elems.length); // 3
+        console.log(elems); // NodeList(3)
+        // 当我们获取一个dom元素后，甚至可以在这个dom元素中 使用选择器继续搜索子元素
+        // 如: 
+        // rootDom.querySelector('')
+        // rootDom.querySelectorAll('')
+
+    </script>
+</body>
+</html>

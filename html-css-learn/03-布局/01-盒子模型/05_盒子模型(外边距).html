@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            /* 
+                外边距同样有四个方向:
+                    margin-top     上外边距，值越大当前元素越靠下
+                    margin-left    左外边距，值越大当前元素越靠右
+                    margin-bottom  下外边距，值越大当前元素下面的元素会越靠下
+                    margin-right   右外边距，值越大当前元素右面的元素会越靠右
+
+                    由于我们的浏览器是自左向右、自上向下的顺序排布，
+                    所以设置margin-top 和 margin-left 是改变自身元素的位置;
+                    但是设置margin-bottom 和 margin-right 是改变其他元素的位置;
+            */
+            margin-bottom: 50px;
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

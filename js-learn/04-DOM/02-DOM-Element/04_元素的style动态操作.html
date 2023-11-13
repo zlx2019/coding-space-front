@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的style动态设置</title>
+</head>
+<style>
+    .box{
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div class="box">
+        我是Box
+    </div>
+
+    <script>
+        var elem = document.querySelector('.box')
+        // 1. 在js中，css样式的属性名是使用驼峰命名法
+        // 设置元素的背景颜色
+        elem.style.backgroundColor = 'black'
+        // 设置字体颜色
+        elem.style.color = 'white'
+        // 设置字体大小
+        elem.style.fontSize = '50px'
+
+        // 2. 如果将一个属性的值设置为 空字符串，则表示使用默认值
+        elem.style.fontSize = ''
+
+        // 3. 同时设置多个样式
+        elem.style.cssText = "font-size: 20px; color: yellow;"
+
+    </script>
+</body>
+</html>

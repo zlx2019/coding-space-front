@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在ES5通过原型链实现继承</title>
+    <!-- 
+        本章练习会使用 原型链 + 借用父类构造函数 来实现面向对象中的继承
+     -->
+</head>
+<body>
+    <script>
+        // 1. 定义 Person 顶层父类构造函数
+        // 在 Person 中定义公共属性name、age和show方法
+        function Person(name,age){
+            this.name = name
+            this.age = age            
+        }
+        // 定义方法，绑定到Person原型
+        Person.prototype.show = function(){
+            console.log(`Hi, i name is ${this.name}, age is ${this.age}`);
+        }
+        // 2. 定义 Student 派生类
+        // 使用 组合 + 借用 的方式实现继承
+        function Student(name,age,grades){
+            // 2.1 借用父类的构造函数，将name，age属性绑定到刚创建好的Student空实例
+            // call(this)，会将this绑定到函数中的this
+            // 此时的this就是 创建好的Student实例，为了实现代码复用，将通过Person的构造函数
+            // 将name、age，绑定到Student实例中
+            var s = Person.call(this,name,age)
+            // 2.2 设置Student对象独有的属性
+            this.grades = grades
+        }
+        // 2.3 将Student的原型，指向一个Person的实例，借此来访问Person的方法
+        Student.prototype = new Person()
+        // 2.4 绑定Student独有的方法
+        Student.prototype.study = function(){
+            console.log(`我是学生，我的成绩是 ${this.grades}`);
+        }
+        // 这种方式的缺点:
+        // - 会执行两次父类的构造函数
+        // - 所有的实例都会存在两份分父类的数据(原型、属性)
+
+        // 3. 测试
+        var stu = new Student('小明',16,98)
+        console.log(stu)  // Student {name: '小明', age: 16, grades: 98}
+        console.log(stu.__proto__); // Person {name: undefined, age: undefined, study: ƒ}
+        stu.show()  // Hi, i name is 小明, age is 16
+        stu.study() // 我是学生，我的成绩是 98
+        
+
+
+        // // 3. 定义 Teacher 派生类
+        // function Teacher(name,age,salary){
+        //     // 3.1 借用父类Person的构造函数，将name，age属性绑定到刚创建好的Teacher空实例
+        //     var s = Person.call(this,name,age)
+
+        //     // 3.2 设置Teacher对象独有的属性
+        //     this.salary = salary;
+        // }
+        // // 3.3 设置Teacher独有的方法
+        // Teacher.prototype = new Person()
+        // Teacher.prototype.teaching = function(){
+        //     console.log(`我是教师，我的薪水是 ${this.salary}`);
+        // }
+
+    </script>
+</body>
+</html>

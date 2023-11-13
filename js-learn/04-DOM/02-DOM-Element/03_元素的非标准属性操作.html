@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的自定义属性获取</title>
+</head>
+<body>
+    <div class="box" data-age="18" data-height="188"></div>
+
+    <script>
+        // 在之前提到了 想获取非标准属性，可以使用getAttribute()方法获取
+        // 自定义属性使用 data- 开头，可以使用元素的dateset获取
+        // 在小程序开发中，使用的就是这种方式
+        var elem = document.querySelector('.box')
+        console.log(elem.dataset.age); // 18
+        console.log(elem.dataset.height); // 188
+    </script>
+</body>
+</html>

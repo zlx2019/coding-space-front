@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义原型链实现继承(最终实现)</title>
+    <!-- 
+        本章练习使用 原型链 + 借用 + 寄生式函数 实现ES5中的继承
+     -->
+</head>
+<body>
+    <script>
+        /**
+         * 传入继承类和被继承类(子类和父类)，通过原型链将子类指向父类
+         */
+        function inherit(ChildType,SuperType){
+            ChildType.prototype = Object.create(SuperType.prototype)
+            Object.defineProperty(ChildType.prototype,"constructor",{
+                enumerable: false,
+                configurable: true,
+                writable: true,
+                value: ChildType
+            })
+        }
+
+        // 1. 定义 Person 顶层父类构造函数
+        function Person(name,age){
+            this.name = name
+            this.age = age            
+        }
+        Person.prototype.show = function(){
+            console.log(`Hi, i name is ${this.name}, age is ${this.age}`);
+        }
+        
+        // 2. 定义 Student 派生类
+        function Student(name,age,grades){
+            // 2.1 借用父类的构造函数，将name，age属性绑定到刚创建好的Student空实例
+            var s = Person.call(this,name,age)
+            // 2.2 设置Student对象独有的属性
+            this.grades = grades
+        }
+        // 2.3 调用工具函数，将Student的原型 指向 Person
+        inherit(Student,Person)
+        Student.prototype.study = function(){
+            console.log(`我是学生，我的成绩是 ${this.grades}`);
+        }
+        
+        // 3. 定义 Teacher 派生类
+        function Teacher(name,age,salary){
+            var s = Person.call(this,name,age)
+            this.salary = salary;
+        }
+        // 3.1 绑定父类的原型
+        inherit(Teacher,Person)        
+        Teacher.prototype.teaching = function(){
+            console.log(`我是教师，我的薪水是 ${this.salary}`);
+        }
+
+
+        // 4. 测试
+        var stu = new Student('小明',16,98)
+        console.log(stu)  // Student {name: '小明', age: 16, grades: 98}
+        stu.show()        // Hi, i name is 小明, age is 16
+        stu.study()       // 我是学生，我的成绩是 98
+
+
+        var tec = new Teacher('王老师',30,5000)
+        console.log(tec); //  Teacher {name: '王老师', age: 30, salary: 5000}
+        tec.show()        //  Hi, i name is 王老师, age is 3
+        tec.teaching()    //  我是教师，我的薪水是 5000
+    </script>
+</body>
+</html>

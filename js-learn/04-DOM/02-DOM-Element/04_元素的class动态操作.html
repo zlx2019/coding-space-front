@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的class 动态操作</title>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+
+    <script>
+        // 如果我们想通过js，动态的修改一个元素的class
+        // 那么可以使用classList属性，提供了一些API方便我们操作:
+        // add(className) - 在原有的class中，追加一个新的class
+        // remove(className) - 在原有的class中，移除该class
+        // toggle(className) - 如果不存在该class，就追加，存在就移除该class
+        // contains(className) - 检查class是否已存在
+        var elem = document.querySelector('.box')
+
+        console.log(elem.classList.contains('box')); // true
+
+        elem.classList.add('item')
+        elem.classList.add('item1')
+        console.log(elem.classList.contains('item')); // true
+
+        elem.classList.remove('item1')
+        console.log(elem.classList.contains('item1')); // false
+
+        elem.classList.toggle('item2')
+        console.log(elem.classList.contains('item2')); // true
+        
+        elem.classList.toggle('item2')
+        console.log(elem.classList.contains('item2')); // false
+    </script>
+</body>
+</html>

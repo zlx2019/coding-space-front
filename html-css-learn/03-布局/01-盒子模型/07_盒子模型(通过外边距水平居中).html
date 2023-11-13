@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 100%;
+            width: 100%;
+            background-color: mediumseagreen;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: tomato;
+            border: 5px beige solid;
+            
+            /* 
+                将 margin设置为auto后，元素的外边距由浏览器自动计算，左右和上下外边距的计算方式有所不同
+                    - margin-left 和 margin-right 设置为auto 浏览器则会自动使其最大值
+                    - margin-top 和 margin-bottom 设置为auto 则表示外边距为0
+                
+                如果 margin-left 和 margin-right 同时设置为 auto 则会使元素左右两边的外边距相同，
+                也就是使自身元素在父元素中水平居中，这是一种常用的水平居中方式
+            */
+
+            /* 
+            表示 上下左右外边距全部为 auto
+                也就是为: 0 auto 0 auto
+            */
+            margin: auto;
+            /* 可以简写为 */
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+    </div>
+    
+</body>
+</html>

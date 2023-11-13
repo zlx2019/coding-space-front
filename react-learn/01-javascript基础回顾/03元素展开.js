@@ -25,5 +25,5 @@ obj = {
 }
 
 // 将一个对象中包含的值,拷贝到另一个新的对象中
-obj2 = {...obj}
+obj2 = {age: 20,...obj}
 console.log(obj2); // { name: '小张', age: 18, gender: '男' }

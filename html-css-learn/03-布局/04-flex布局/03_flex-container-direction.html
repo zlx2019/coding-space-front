@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex 主轴方向</title>
+</head>
+<style>
+    .container{
+        width: 500px;
+        height: 500px;
+        background-color: #EAE2B7;
+
+        /*开启flex布局*/
+        display: flex;
+
+        /*
+        默认情况下，flex item 会在 flex container中按主轴方向排布，默认的主轴方向为row(水平排布)
+        通过 flex-direction 设置flex的主轴方向，可选值:
+            - row 默认主轴方向，从左往右，水平排布;
+            - row-reverse，从右往左，水平排布;
+            - column 从上往下，垂直排布;
+            - column-reverse 从下往上，垂直排布;
+        */
+
+        /*默认主轴反向*/
+        flex-direction: row;
+
+        /* 设置 flex主轴 为反向水平排布*/
+        flex-direction: row-reverse;
+
+        /*设置主轴反向为 交叉轴(垂直方向-从上往下)*/
+        flex-direction: column;
+
+        /*设置主轴反向为反向交叉轴 (垂直方向-从下往上)*/
+        flex-direction: column-reverse;
+    }
+
+    .item{
+        width: 120px;
+        height: 120px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+</div>
+
+<script src="util.js"></script>
+</body>
+</html>

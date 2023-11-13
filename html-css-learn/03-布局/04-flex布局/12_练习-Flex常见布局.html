@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex常用布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*标题样式*/
+        .head-title{
+            /*水平居中*/
+            text-align: center;
+            color: #555;
+            font-size: 26px;
+            padding: 30px 0;
+        }
+
+        /*flex 容器样式*/
+        .container{
+            width: 1200px;           /*容器宽度*/
+            min-height: 500px;
+            background-color: #fff;/*背景颜色*/
+            border-radius: 10px;    /*圆角*/
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);/*阴影*/
+            margin:  auto;/*水平居中*/
+            padding: 30px;/*内边距*/
+
+            display: flex;/* flex 布局*/
+            flex-wrap: wrap;/* items 以交叉轴方向多行排布*/
+        }
+        /*flex item样式*/
+        .container .item{
+            width: 150px;
+            height: 100px;
+            border-radius: 8px;
+            margin: 20px;/*item的外边距*/
+
+            display: flex;/*让 item 内部也使用flex布局*/
+            align-items: center;/*垂直居中*/
+            justify-content: center;/*水平居中*/
+        }
+    </style>
+</head>
+<body>
+    <div class="head-title">常用的Flex布局1</div>
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+        <div class="item">item6</div>
+        <div class="item">item7</div>
+        <div class="item">item8</div>
+        <div class="item">item9</div>
+        <div class="item">item10</div>
+        <div class="item">item11</div>
+        <div class="item">item12</div>
+        <div class="item">item13</div>
+        <div class="item">item14</div>
+        <div class="item">item15</div>
+        <div class="item">item16</div>
+        <div class="item">item17</div>
+        <div class="item">item18</div>
+        <div class="item">item19</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+        <div class="item">item20</div>
+    </div>
+<script src="util.js"></script>
+</body>
+</html>

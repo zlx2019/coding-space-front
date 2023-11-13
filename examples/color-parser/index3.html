@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    webkitdirectory 表示为目录选择器
+-->
+<!--<button id="selector">选择目录</button>-->
+<input type="file" id="filepicker"  webkitdirectory directory />
+<ul id="listing">
+
+</ul>
+<script>
+    // async function openDirectory(e){
+    //     // 打开一个目录
+    //     const directory = await window.showDirectoryPicker()
+    //
+    //     // 遍历该目录中的 文件和目录
+    //     const entries = await directory.entries();
+    //     let ulElem = document.getElementById('listing')
+    //     for await (const [_,file] of entries) {
+    //         console.log(file)
+    //         console.log(`文件名: ${file.name}，文件类型: ${file.kind}`);
+    //         let item = document.createElement("li")
+    //         item.textContent = file.name
+    //         ulElem.appendChild(item)
+    //     }
+    //
+    //     // 获取该目录中的子目录
+    //     // const childDirectory = directory.getDirectoryHandle("子目录名称");
+    //     // console.log(childDirectory)
+    //     // // 获取该目录中的文件
+    //     // const files = directory.getFileHandle("文件名");
+    //     // console.log(files)
+    // }
+    // document.getElementById('selector').addEventListener('click',openDirectory)
+
+    document.getElementById('filepicker').addEventListener('change',function (event){
+        // let ulElem = document.getElementById('listing')
+        console.log(event.target.files);
+        let ulElem = document.getElementById('listing')
+        for (const file of event.target.files){
+            if (!file || file.type === ""){
+                continue
+            }
+            console.log(`文件名: ${file.name},文件类型: ${file.type}，文件大小: ${file.size}`)
+            let item = document.createElement("li")
+            item.textContent = file.name
+            ulElem.appendChild(item)
+        }
+    })
+</script>
+</body>
+</html>

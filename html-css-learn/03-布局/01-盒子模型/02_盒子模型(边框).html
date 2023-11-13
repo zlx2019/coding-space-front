@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    .box1{
+        /* 1em = 一个当前元素的font-size大小 */
+        font-size: 100px;
+        height: 1em;
+        width: 1em;
+
+        /*         
+        为盒子设置边框，涉及三个样式
+            - border-width 边框的宽度
+            - border-color 边框的颜色
+            - border-style 边框的样式(实线/虚线等)
+        设置盒子的边框样式，默认是为所有边框(四周)添加样式
+        */
+        border-width: 5px;
+        border-color: black;
+        border-style: solid;
+
+        /* 可以简写为如下方式 */
+        border: 5px black solid;
+
+        /* 
+            假如我们想要为每个边框设置不同的样式，可以这样设置
+            表示分别为 上、右、下、左边框设置不同的宽度.
+         */
+        border-width: 10px 8px 6px 3px;
+
+        /* 表示上下为10px，左右为20px */
+        border: 10px 20px; 
+
+        /* 其他样式也是同理 */
+        border-color: aliceblue rebeccapurple beige blue;
+    }
+</style>
+<body>
+    <div class="box1">
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<!--
+    id: 元素ID
+    width: 画布的宽度
+    height: 画布的高度
+ -->
+<canvas id="canvas" width="800" height="800">
+    您的浏览器不支持canvas，请下载最新的浏览器，或者请联系面试者.
+    <a href="https://www.google.com/intl/zh-CN/chrome/"></a>
+</canvas>
+
+<script>
+    window.onload = function(){
+        // 1. 获取canvas DOM元素
+        const canvas = document.getElementById('canvas')
+        // 2. 获取canvas的绘图上下文
+        const ctx = canvas.getContext('2d') // 2d | webgl
+
+        // 绘制圆形
+        // arc(圆心x,圆心y,圆的半径，起始角度，结束角度,顺时针/逆时针)
+
+        // 案例1: 画一个180°的半圆
+        ctx.beginPath()
+        ctx.arc(100,100,50,0,Math.PI,false)
+        ctx.stroke()
+        ctx.closePath()
+
+        // 案例2: 画一个360°的圆
+        ctx.beginPath()
+        ctx.arc(200,200,50,0,Math.PI * 2)
+        ctx.stroke()
+        ctx.closePath()
+    }
+</script>
+</body>
+</html>

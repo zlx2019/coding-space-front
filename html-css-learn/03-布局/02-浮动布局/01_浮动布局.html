@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<!--
+    使用传统的盒子模型，可以简单实现垂直布局，但是如果要想实现水平布局就会尤为复杂.
+
+    浮动 (float)
+    - 是一种传统的网页布局
+    - 通过浮动可以使得元素脱离文档流,从而实现横向排列;
+ -->
+<style>
+    .box1{
+        height: 200px;
+        width: 200px;
+        background-color: tomato;
+
+        /*
+            float 设置元素浮动,一旦元素设置为浮动后，将会脱离文档流，就好像脱离了地面一样，原本排布在后面的元素会占据浮动的元素原本位置
+            可选值：
+                - none 默认值，不浮动
+                - left 向当前元素的包含块左侧浮动
+                - right 向当前元素的包含块右侧浮动
+        */
+        float: left;
+    }
+    .box2{
+        height: 200px;
+        width: 200px;
+        background-color: rebeccapurple;
+        float: left;
+    }
+    .box3{
+        height: 200px;
+        width: 200px;
+        background-color: blue;
+        float: left;
+    }
+
+</style>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+</body>
+</html>

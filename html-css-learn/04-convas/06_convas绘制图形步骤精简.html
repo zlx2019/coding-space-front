@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        id: 元素ID
+        width: 画布的宽度
+        height: 画布的高度
+     -->
+    <canvas id="canvas" width="800" height="800">
+        您的浏览器不支持canvas，请下载最新的浏览器，或者请联系面试者.
+        <a href="https://www.google.com/intl/zh-CN/chrome/"></a>
+    </canvas>
+
+    <script>
+        window.onload = function(){
+            // 1. 获取canvas DOM元素
+            const canvas = document.getElementById('canvas')
+            // 2. 获取canvas的绘图上下文
+            const ctx = canvas.getContext('2d') // 2d | webgl
+
+            // 以最精细的步骤 画出一个矩形图形
+            // 绘制路径-> 颜色填充 -> 清除矩形，每一步都需要进行画笔的开始与结束
+
+            // 3.勾勒矩形路径
+            ctx.beginPath() // 开始描绘路径的线路
+            ctx.rect(100,100,200,200) // 绘制矩形路径
+            ctx.closePath() // 描绘路径结束
+
+            // 4. 画出矩形路径
+            ctx.stroke()
+
+            // 5. 勾勒要填充的矩形
+            ctx.beginPath()
+            ctx.rect(100,100,200,200)
+            ctx.closePath()
+
+            // 6. 填充矩形
+            ctx.fill()
+
+        }
+    </script>
+</body>
+</html>

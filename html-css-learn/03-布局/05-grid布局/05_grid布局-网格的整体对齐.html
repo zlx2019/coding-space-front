@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网格布局-网格的对齐方式2</title>
+</head>
+<style>
+    .container{
+        height: 800px;
+        width: 800px;
+        border: 10px #333 solid;
+        margin: auto;
+
+        /*设置为 grid布局*/
+        display: grid;
+        /*设置行和列*/
+        grid-template-columns: repeat(3,200px);
+        grid-template-rows: 200px 200px;
+
+        /*
+            设置整个网格框架居中对齐
+        */
+        justify-content: center;/*水平居中*/
+        align-content: center;/*垂直居中*/
+
+        /*设置每个网格项在网格中居中对齐*/
+        justify-items: center;
+        align-items: center;
+    }
+    .item{
+        height: 100px;
+        width: 100px;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+    <div class="item item4">item4</div>
+    <div class="item item5">item5</div>
+    <div class="item item6">item6</div>
+</div>
+<script src="../04-flex布局/util.js"></script>
+</body>
+</html>
