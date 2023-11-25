@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>额外补充</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: "zhangsan",
+            age: 18
+        }
+        // 1. 通过添加多个属性描述符
+        Object.defineProperties(obj,{
+            name: {
+                configurable: false
+            },
+            age: {
+                configurable: false
+            }
+        })
+
+        // 2. 获取属性的描述符
+        console.log(Object.getOwnPropertyDescriptor(obj,"name")); 
+        // {value: 'zhangsan', writable: true, enumerable: true, configurable: false}
+
+        // 3. 获取多个属性描述符
+        console.log(Object.getOwnPropertyDescriptors(obj));
+
+
+        // 4. 禁止给对象添加新属性
+        Object.preventExtensions(obj)
+
+        // 5. 禁止给对象 添加和删除属性
+        Object.seal(obj)
+
+        // 6. 禁止给对象 添加、删除、修改属性
+        Object.freeze(obj)
+    </script>
+</body>
+</html>

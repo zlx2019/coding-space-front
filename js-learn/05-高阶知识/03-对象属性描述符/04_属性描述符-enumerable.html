@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性描述符-enumerable</title>
+</head>
+<body>
+    <script>
+        // 属性描述符中的 enumerable 作用如下:
+        // 表示该属性是否可以通过 for-in，或者Object.keys()时获得该属性;
+        // 注意: 通过普通方式定义对象的属性时，该属性默认为 true，而通过Object.defineProperty()添加属性时，默认为false;
+
+        var obj = {
+            name: "王五",
+            age: 22,
+            height: 188.8
+        }
+        console.log(Object.keys(obj)); // {name: '王五', age: 22, height: 188.8}
+        Object.defineProperty(obj,"height",{
+            enumerable: false
+        })
+        console.log(Object.keys(obj)); // {name: '王五', age: 22}
+    </script>
+</body>
+</html>

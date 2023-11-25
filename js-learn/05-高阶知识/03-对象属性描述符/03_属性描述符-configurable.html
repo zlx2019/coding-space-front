@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性描述符-configurable</title>
+</head>
+<body>
+    <script>
+        // 属性描述符中的 configurable 作用如下:
+        // - 是否可以通过 delete 操作符删除掉;
+        // - 是否可以继续通过 defineProperty() 再次配置该属性，一旦设置为false后，该属性的描述符将无法再次修改;
+        // 注意: 通过普通方式定义对象的属性时，该属性默认为 true
+        //       但是如果通过 Object.defineProperty()添加属性时，如果不显示指定configurable，那么则默认为false;
+        // 默认情况下会 true
+
+
+        var obj = {
+            name: "王五",
+            age: 22,
+            height: 188.8
+        }
+        console.log(obj) // {name: '王五', age: 22, height: 188.8}
+        
+        // 删除一个属性
+        delete obj.age 
+        console.log(obj) // {name: '王五', height: 188.8}
+
+        // 为name属性，添加不可删除的描述
+        Object.defineProperty(obj,"name",{
+            configurable: false
+        })
+        
+        delete obj.name
+        console.log(obj); // {name: '王五', height: 188.8}
+    </script>
+</body>
+</html>

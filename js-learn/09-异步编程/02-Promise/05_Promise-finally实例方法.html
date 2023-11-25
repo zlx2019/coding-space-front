@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * finally方法 是 ES9中提供的特性，表示Promise无论是成功还是失败都会执行的方法
+         */
+        new Promise((resolve,reject)=>{
+            // resolve("succ")
+            reject("error")
+        }).then(res=>{
+            console.log("执行成功: ", res);
+        }).catch(err=>{
+            console.log("执行失败: ",err);
+        }).finally(()=>{
+            console.log("执行完成");
+        })
+
+    </script>
+</body>
+</html>

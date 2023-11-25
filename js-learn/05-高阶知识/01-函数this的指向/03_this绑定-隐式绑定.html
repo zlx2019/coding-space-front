@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数中this的隐式绑定</title>
+</head>
+<body>
+    <script>
+        function foo(){
+            console.log(this);
+        }
+        var app = {
+            name: "app",
+            bar: foo
+        }
+        // 通过对象实例调用函数，this会隐式绑定到实例本身
+        app.bar() // {name: 'app', bar: ƒ}
+    </script>
+    
+</body>
+</html>

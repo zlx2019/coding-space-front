@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 当我们已经拿到一个具体的值时，我们想将其转换为Promise来使用
+        // 这个时候就可以使用 Promise.resolve()来完成
+        Promise.resolve("Hello")
+            .then(res=>console.log(res)) // Hello
+
+        // 其实等同于如下操作
+        new Promise((resolve, reject)=>{
+            resolve("Hello")
+        }).then(res=> console.log(res)) // Hello
+
+        // Promise.reject() 同理
+        Promise.reject("Error Message")
+        .catch(err=>console.log(err)) // Error Message
+    </script>
+</body>
+</html>

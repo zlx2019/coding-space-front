@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 刚刚说了all()方法会将多个Promise组合成一个新的Promise，但是只有所有的Promise都resolve后，新的Promise才为fulfilled;
+         * 如果我们想等待多个Promise的结果，并且无论成功或失败时，可以使用allSettled()方法，该方法是ES11提供的
+         */
+        // 任务一
+        const task1 = new Promise((resolve)=>{
+            resolve({
+                name: "task1",
+                data: "1001"
+            })
+        })
+        // 任务二
+        const task2 = new Promise((resolve)=>{
+            resolve({
+                name: "task2",
+                data: "2001"
+            })
+        })
+        // 任务三
+        const task3 = new Promise((resolve,reject)=>{
+            reject("task3 任务失败.")
+        })
+
+        // 等待所有Promise 执行完毕
+        Promise.allSettled([task1,task2,task3])
+            .then(results=>{
+                // 所有的Promise，无论成功或失败，返回值都在 results 参数中
+                for(var res of results){
+                    switch(res.status){
+                        case "fulfilled":
+                            console.log(`任务名: ${res.value.name}，执行成功，返回值: ${res.value.data}`);
+                            break
+                        case "rejected":
+                            console.log(`该任务执行异常: ${res.reason}`);
+                            break
+                    }
+                }
+            })
+        // 任务名: task1，执行成功，返回值: 1001
+        // 任务名: task2，执行成功，返回值: 2001
+        // 该任务执行异常: task3 任务失败.
+    </script>
+</body>
+</html>

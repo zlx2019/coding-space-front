@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标的mouseenter和mouseleave事件</title>
+</head>
+    <style>
+        .parent{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+        }
+    </style>
+<body>
+    <div class="parent">
+        <div class="child">
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 使用mouseover 和 mouseout事件时，如果鼠标移动到了子元素上，会产生如下操作
+         *  1. 离开元素,执行mouseout事件，表示即使进入子元素，也认为是进入一个新的元素，所以触发离开事件;
+         *  2. 进入元素，执行mouseover事件，这个进入事件其实是由子元素所触发，冒泡传递给父元素的;
+         * 
+         * 则会产生事件冒泡，再一次触发 mouseover 和 mouseout事件
+         */ 
+        var parent = document.querySelector('.parent')
+        parent.addEventListener('mouseover',function(e){
+            console.log("进入了parent元素");
+        })
+        parent.addEventListener('mouseout',function(e){
+            console.log("离开了parent元素");
+        })
+
+
+
+    </script>
+</body>
+</html>

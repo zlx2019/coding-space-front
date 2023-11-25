@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义事件的派发</title>
+</head>
+<body>
+    <button class="btn">主动派发按钮的自定义事件</button>
+    <script>
+        // 我们通常监听的事件，如click等都是已经内置好的事件
+        // 我们也可以手动为某些元素派发一些自定义事件
+        var btnElem = document.querySelector('.btn')
+        
+        // 为按钮绑定自定义 customEvent 事件
+        btnElem.addEventListener('customEvent',function(){
+            console.log("按钮 customEvent 事件被触发.");
+        })
+
+        // 主动向 btn元素派发事件
+        btnElem.onclick = function(){
+            // 创建一个自定义事件
+            var customEvent = new Event("customEvent")
+            // 派发 customEvent 自定义事件
+            btnElem.dispatchEvent(customEvent)
+        }
+    </script>
+</body>
+</html>

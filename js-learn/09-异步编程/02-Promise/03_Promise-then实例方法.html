@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * Promise的then方法，主要用于注册状态更新为 fulfilled 后的回调函数
+         * 
+         * Promise的 then方法，其返回值本身也是一个Promise，所以可以链式调用;
+         * 并且只有上一个Promise，具有返回值时，才会调用下一个Promise的resolve;
+         * 每个then方法的参数，都是上一个then方法返回值
+         */ 
+
+        var p = new Promise((resolve,reject)=>{
+            // 执行then回调
+            resolve(0)
+        })
+        p.then(res=>{
+            console.log(res); // 0
+            return ++res
+        }).then(res=>{
+            console.log(res); // 1
+            return ++res
+        }).then(res=>{
+            console.log(res); // 2
+        })
+    </script>
+</body>
+</html>

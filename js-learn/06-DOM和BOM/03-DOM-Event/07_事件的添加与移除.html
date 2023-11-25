@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的移除</title>
+</head>
+<body>
+    <button class="btn">按钮</button>
+    <script>
+        var btnElem = document.querySelector('.btn')
+
+        function btnClick(){
+            console.log("触发了按钮的 click 事件...");
+        }
+
+        // 添加click 事件
+        btnElem.addEventListener('click',btnClick)
+
+        // 五秒后，自动移除btn的click事件
+        setTimeout(() => {
+            btnElem.removeEventListener('click',btnClick)
+            console.log("已移除点击事件.");
+        }, 5000);
+
+    </script>
+    
+</body>
+</html>

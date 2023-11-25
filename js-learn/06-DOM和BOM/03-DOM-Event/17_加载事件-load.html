@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源加载事件</title>
+</head>
+<body>
+    <!-- 
+        load事件，指一些资源加载完毕后，会触发的事件
+            如注册到window对象中，在整个页面及所有依赖资源，如样式、图片等都加载完毕时触发;
+            如注册到 img 元素中，当图片加载完成时会触发;
+            如 FileReader 读取完数据时会被触发;
+            等...
+     -->
+    <script>
+        // 注册页面加载完成后事件
+        // 通过该事件，完成脚本后面定义的box的样式设置
+        window.onload = function(e){
+            console.log("window - onload");
+            var boxElem = document.querySelector('.box')
+            boxElem.style.cssText = "height: 200px; width: 200px; background: red;"
+        }
+    </script>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式下绑定this的特殊情况</title>
+</head>
+<body>
+    <script>
+        // 使用严格模式
+        "use strict"
+        function foo(){
+            console.log(`${this}, ${typeof this}`);
+        }
+        // 严格模式下，可以直接将基本类型绑定到函数的this中
+        foo.apply("abc") // abc, string
+        foo.apply(null) // null，object
+        foo.apply(undefined) // undefined,undefiend
+
+    </script>
+</body>
+</html>

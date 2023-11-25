@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态伪类的使用</title>
+    <style>
+
+        /* 设置 a 链接未被点击时的样式 */
+        a:link {
+            color: chartreuse;
+        }
+        
+        /* 设置 a 链接已经被点击过后的样式 */
+        a:visited{
+            color:rgb(123, 124, 124);
+        }
+
+        /* 设置 a 链接处于聚焦时的样式 */
+        a:focus{
+            color: yellow;
+            
+        }
+
+        /* 设置鼠标悬浮到 a 链接上时的样式 */
+        a:hover {
+            color: coral;
+        }
+
+        /* 设置鼠标点击按住 a 链接时的样式 */
+        a:active {
+            color: black;
+        }
+
+        /* 动态伪类的使用顺序必须要以上面这样定义 */
+
+        /* 文本框聚焦时的样式 */
+        input:focus{
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        使用a链接 来学习伪类，因为a元素支持的伪类比较多
+     -->
+    <a href="https://jd.com">京东</a>
+    <a href="https://taobao.com">淘宝</a>
+    <a href="https://baidu.com">百度一下</a>
+
+    <input type="text">
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性访问描述</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: "zhangsna"
+        }
+        // Vue2的数据响应式就是使用的该方式
+        Object.defineProperty(obj,"name",{
+            set: (value)=> {
+                console.log(`name属性被设置 value: ${value}`);
+            },
+            // get: () => {
+            //     console.log("读取 obj name 属性");
+            // }
+        })
+
+        obj.name = "qwe" // name属性被设置 value: qwe
+    </script>
+</body>
+</html>

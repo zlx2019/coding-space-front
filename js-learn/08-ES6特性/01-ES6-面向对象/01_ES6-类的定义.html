@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class定义类</title>
+</head>
+<body>
+    <script>
+        /**
+         * 在ES5之前我们都是通过构造函数的形式来创建类，这种方式并不容易理解
+         * 在ES6(ECMAScript2015) 新的标准中，使用class关键字来定义类
+         */
+
+        //  类的定义
+         class Person{
+            // 构造函数
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            // 定义实例方法
+            // 其本质上，是定义在了Person.prototype上
+            say(){
+                console.log(this);
+            }
+            show = ()=>{
+                console.log(this);
+            }
+         }
+         // 创建实例对象
+         var p =  new Person("zhangsan",18)
+         console.log(p); // {name: 'zhangsan', age: 18, show: ƒ}
+         p.say()  // {name: 'zhangsan', age: 18, show: ƒ}
+         p.show() // {name: 'zhangsan', age: 18, show: ƒ}
+    </script>
+</body>
+</html>

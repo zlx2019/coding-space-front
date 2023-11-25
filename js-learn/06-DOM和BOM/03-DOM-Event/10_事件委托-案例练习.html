@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托-案例练习</title>
+</head>
+<body>
+    <div class="box">
+        <button data-action="search">搜索</button>
+        <button data-action="new">新建</button>
+        <button data-action="remove">删除</button>
+        <button>其他</button>
+    </div>
+
+    <script>
+        // 监听四个按钮哪个按钮点击 
+        document.querySelector('.box').onclick = function(event){
+            // 点击 div 自身时不处理
+            if (event.target === event.currentTarget) {
+                return
+            }
+            // 获取被点击的按钮
+            var btnElem = event.target
+            // 判断是哪个按钮 
+            switch (btnElem.dataset.action) {
+                case "search":
+                    alert('搜索按钮被点击~')
+                    break
+                case "new":
+                    alert('新建按钮被点击~')
+                    break
+                case "remove":
+                    alert('删除按钮被点击~')
+                    break
+                default:
+                    alert('其他按钮被点击~')
+            }
+        }
+    </script>
+</body>
+</html>

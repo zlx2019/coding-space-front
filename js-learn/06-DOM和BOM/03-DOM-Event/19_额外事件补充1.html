@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一些其他事件补充</title>
+    <!-- 
+        元素内容的 复制、剪切、粘贴事件
+        - copy
+        - cut
+        - paste
+
+        - resize: 窗口大小变化时触发
+     -->
+</head>
+<body>
+    <input class="info" type="text">
+
+    <script>
+        var infoElem = document.querySelector('.info')
+        infoElem.addEventListener('copy',function(e){
+            console.log("输入框复制 copy 事件.");
+            // 如果想禁止复制功能，将默认行为阻止即可
+            e.preventDefault()
+        })
+        infoElem.addEventListener('cut',function(e){
+            console.log("输入框剪切事件.");
+        })
+        infoElem.addEventListener('paste',function(e){
+            console.log("输入框粘贴事件..");
+            // 获取到粘贴的内容
+            console.log(e.clipboardData.getData('text/plain'));
+        })
+    </script>
+</body>
+</html>

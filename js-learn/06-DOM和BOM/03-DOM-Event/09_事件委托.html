@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <!-- 
+        通过事件冒泡的特性，我们可以实现一种事件处理模式-事件委托模式;
+            简单来说就是当我们需要对多个子元素进行事件监听时，我们可以直接对其父元素进行事件绑定,
+            当子元素发生事件后，会产生冒泡将事件传递到父元素，并且在父元素中通过事件对象的target属性获取到产生事件的子元素;
+        
+        如下案例: 当点击某个li元素时，将文字颜色设置为 red
+     -->
+     <style>
+        .active{
+            color: red;
+            font-size: 20px;
+        }
+     </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+        // 获取到父元素 ul
+        var ulElem = document.querySelector('ul')
+
+        // 上一次点击的元素
+        var lastActiveElem = null
+        
+        // 注册 click点击事件
+        ulElem.addEventListener('click',function(event){
+            if(event.target === event.currentTarget){
+                // 点击ul元素，不处理
+                return
+            }
+            // 移除上一次点击的li元素
+            lastActiveElem && lastActiveElem.classList.remove('active')
+
+            // 为产生事件的子元素，添加类样式
+            event.target.classList.add('active')
+            // 记录该元素
+            lastActiveElem = event.target
+        })
+    </script>
+</body>
+</html>

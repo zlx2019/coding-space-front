@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的this</title>
+</head>
+<body>
+    <script>
+        /**
+         * 箭头函数是ES6之后新增的一种编写函数的方式，它与普通函数的区别:
+         *  - 箭头函数没有 this、arguments属性;
+         *  - 箭头函数不能作为构造函数来使用;
+         */
+        
+         // 1. 在箭头函数中，不存在this
+         // 如果在箭头函数中使用this，那么会默认往自己的上层作用域不断的寻找，直到找到最顶层
+        const foo = () => {
+            console.log(this); // window
+        }
+        foo()
+
+        // 2. 箭头函数无法显式绑定this
+        // 通过apply手动绑定this，依然会往上层作用域寻找，找到window全局对象
+        foo.apply("asd") // window
+
+
+
+    </script>
+</body>
+</html>

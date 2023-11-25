@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的创建</title>
+</head>
+<body>
+    <div class="root">我是root元素</div>
+    
+    <script>
+        var rootElem = document.querySelector('.root')
+
+        // 创建一个 div Element
+        var divElem = document.createElement("div")
+        divElem.className = "box"
+        divElem.textContent = "我是box元素"
+
+        // 元素插入方法
+        // rootElem.appendChild(divElem) // 将元素追加到root子元素的末尾
+        // rootElem.prepend(divElem)   // 将元素添加到root子元素列表的头部
+        // rootElem.before(divElem) // 将元素作为root元素的兄弟元素(上面)
+        // rootElem.after(divElem) // 将元素作为root元素的兄弟元素(后面)
+        rootElem.replaceWith(divElem) // 将root元素替换掉
+    </script>
+</body>
+</html>

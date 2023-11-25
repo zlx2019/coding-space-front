@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的捕获与冒泡的顺序</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // 为 html、body、div，分别都设置点击事件，并且捕获与冒泡全部设置,借此查看事件传递的顺序
+        // 设置点击事件-捕获
+        document.querySelector('html').addEventListener('click',(e)=> clickFn("html-事件捕获~"),true)
+        document.querySelector('body').addEventListener('click',(e)=> clickFn("body-事件捕获~"),true)
+        document.querySelector('.box').addEventListener('click',(e)=> clickFn("div-事件捕获~"),true)
+
+        // 设置点击事件-冒泡
+        document.querySelector('html').addEventListener('click',(e)=> clickFn("html-事件冒泡~"))
+        document.querySelector('body').addEventListener('click',(e)=> clickFn("body-事件冒泡~"))
+        document.querySelector('.box').addEventListener('click',(e)=> clickFn("div-事件冒泡~"))
+
+        // 事件流的执行顺序: 先由外向内进行捕获，再由内向外进行冒泡
+        
+        // html-事件捕获~
+        // body-事件捕获~
+        // div-事件捕获~
+        // div-事件冒泡~
+        // body-事件冒泡~
+        // html-事件冒泡~
+
+        function clickFn(msg){
+            console.log(msg);
+        }
+    </script>
+</body>
+</html>

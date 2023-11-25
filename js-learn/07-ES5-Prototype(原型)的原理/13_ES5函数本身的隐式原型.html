@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的隐式原型</title>
+</head>
+<body>
+    
+    <script>
+        function Foo(){}
+        function Bar(){}
+        // 函数本身也属于一个对象，定义一个函数实际上就是 new Function()
+        // 就类似于 var obj = {} 等同于 new Object() 一般
+        var obj = {}
+        // 所以，通过 new Object() 创建的对象的隐式原型，全都指向 Object 的显示原型
+        console.log(obj.__proto__ === Object.prototype);
+        
+        // 函数对象也是如此，作为对象，函数对象也有隐式原型([[prototype]])
+        console.log(Foo.__proto__); // ƒ () { [native code] }
+        console.log(Object.getPrototypeOf(Bar)); // ƒ () { [native code] }
+        // 而所有的函数对象的隐式原型，全部指向 Function 的显示原型
+        console.log(Foo.__proto__ === Function.prototype); // true
+        console.log(Bar.__proto__ === Function.prototype); // true
+        console.log(Foo.__proto__ === Bar.__proto__); // true
+
+        // 并且 Object 本身也是一个函数对象，所以 Object 的隐式原型，同样指向 Function 的显示原型
+        console.log(Object.__proto__ === Function.prototype); // true
+        
+
+    </script>
+</body>
+</html>

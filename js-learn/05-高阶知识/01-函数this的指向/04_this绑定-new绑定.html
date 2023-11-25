@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数通过new绑定this</title>
+</head>
+<body>
+    <script>
+        // js中的函数，可以作为一个类的构造函数来使用，也就是通过 new 操作符来调用函数
+        // 当使用new调用一个函数时，暗中会执行如下操作:
+        // 1. 创建一个新的空对象
+        // 2. 将this绑定到这个新对象
+        // 3. 执行函数体逻辑
+        // 4. 将新对象的[[prototype]](隐式原型)指向函数的prototype(显示原型)
+        // 5. 返回这个新对象
+        function User(name,age){
+            this.name = name
+            this.age = age
+            console.log(this);
+        }
+
+        // 所以在这种情况下，函数中的this，本质上就是即将要返回的实例对象
+        var user = new User('zhangsan',18) // User {name: 'zhangsan', age: 18}
+        console.log(user); // User {name: 'zhangsan', age: 18}
+    </script>
+</body>
+</html>

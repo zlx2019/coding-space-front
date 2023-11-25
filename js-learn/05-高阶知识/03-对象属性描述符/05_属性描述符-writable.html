@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_属性描述符-writable</title>
+</head>
+<body>
+    <script>
+        // 属性描述符中的 writable 作用: 描述该属性是否可以setter修改
+        var obj = {}
+
+        // 向obj中 定义一个新的属性name，并且设置为不可setter
+        Object.defineProperty(obj,"name",{
+            writable: false, // 表示不可修改
+            value: "张三" // 表示属性的初始值
+        })
+        console.log(obj); // {name: '张三'}
+        obj.name = "王五" 
+        console.log(obj); // {name: '张三'}
+    </script>
+</body>
+</html>

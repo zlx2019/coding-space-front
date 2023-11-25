@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5中，定义对象访问器的方式
+        // 方式一: 通过属性描述符
+        var foo = {
+            _name: undefined
+        }
+        Object.defineProperty(foo,"name",{
+            configurable: true,
+            enumerable: true,
+            set: function(value){
+                this._name = value
+            },
+            get: function(){
+                return this._name
+            }
+        })
+        foo.name = "张三"
+        console.log(foo.name); // 
+        
+        // 方式二: 直接在对象中定义访问器
+        var obj = {
+            _name: undefined,
+            set name(value){
+                this._name = value
+            },
+            get name(){
+                return this._name
+            }
+        }
+        obj.name = "王五"
+        console.log(obj.name);
+    </script>
+</body>
+</html>

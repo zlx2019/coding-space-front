@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+          * Promise共有三种状态:
+          *  - pending: 待定状态，既没有兑现，也没有被拒绝;
+          *  - fulfilled: 已兑现状态，意味着操作成功，调用了resolve方法后处于这种状态;
+          *  - rejected: 已拒绝状态，意味着操作失败，调用了reject方法后处于这种状态;
+          */
+
+        // 1. pending状态
+        // 当promise未调用 resolve或者reject时，则处于这种状态
+        var promise = new Promise((resolve,reject)=>{
+
+        })
+        console.log(promise);  // Promise {<pending>}
+
+
+        // 2. fulfilled 状态
+        // 当Promise内部执行了 resolve后，状态则更新为fulfilled
+        var promise2 = new Promise((resolve,reject)=>{
+            resolve("success")
+        })
+        console.log(promise2); // Promise {<fulfilled>: 'success'}
+
+
+        // 3. rejected 状态
+        // 当Promise内部执行了 reject方法后，状态则更为rejected
+        var promise3 = new Promise((resolve,reject)=>{
+            reject("错误信息")
+        })
+        console.log(promise3);  // Promise {<rejected>: '错误信息'}
+    </script>
+</body>
+</html>

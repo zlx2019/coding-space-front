@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标的mouseenter和mouseleave事件</title>
+</head>
+    <style>
+        .parent{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+        }
+    </style>
+<body>
+    <div class="parent">
+        <div class="child">
+        </div>
+    </div>
+
+    <script>
+        /**
+         * mouseenter 与 mouseleave事件，不支持事件冒泡，不会受子元素的影响
+         */ 
+        
+        var parent = document.querySelector('.parent')
+        parent.addEventListener('mouseenter',function(e){
+            console.log("进入了parent元素");
+        })
+        parent.addEventListener('mouseleave',function(e){
+            console.log("离开了parent元素");
+        })
+
+        // var child = document.querySelector('.child')
+        // child.addEventListener('mouseenter',function(e){
+        //     console.log("进入了child元素");
+        // })
+        // child.addEventListener('mouseleave',function(e){
+        //     console.log("离开了child元素");
+        // })
+
+
+    </script>
+</body>
+</html>

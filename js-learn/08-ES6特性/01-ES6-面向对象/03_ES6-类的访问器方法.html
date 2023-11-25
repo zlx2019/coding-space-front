@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this._name = name
+                this._age = age
+            }
+            // name 属性的 getter settetr
+            set name(name){
+                this._name = name
+            }
+            get name(){
+                return this._name
+            }
+            set age(age){
+                this._age = age;
+            }
+            get age(){
+                return this._age
+            }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用代码描述什么是柯里化</title>
+</head>
+<body>
+    <script>
+
+        // 举例一
+        // 变换前的普通函数
+        function foo(x,y,z){
+            console.log(x + y + z);
+        }
+        foo(1,2,3) // 6
+
+        // 柯里化后的函数
+        function bar(x){
+            return function(y){
+                return function(z){
+                    console.log(x + y + z);
+                }
+            }
+        }
+        bar(1)(2)(3) // 6
+
+        // 举例二(箭头函数)
+        const baz = x => {
+            return y => {
+                return z => {
+                    console.log(x + y + z);
+                }
+            }
+        }
+        baz(1)(2)(3) // 6
+
+        // 进一步优化箭头函数
+        const say = x=> y=> z=> console.log(x + y + z);
+        say(1)(2)(3) // 6
+    </script>
+</body>
+</html>

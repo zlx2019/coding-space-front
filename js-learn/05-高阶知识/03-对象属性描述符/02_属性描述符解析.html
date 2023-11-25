@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性描述符</title>
+</head>
+<body>
+    <script>
+        /**
+         * Object.defineProperty(obj,prop,descriptor) 方法表示向一个对象中添加新的属性，或者修改已有的属性，并且指定属性的描述符(descriptor),并且返回此对象;
+         *  - obj: 目标对象;
+         *  - prop: 要描述的对象中的属性名称;
+         *  - descriptor: 描述符信息;
+         *     数据属性描述符:
+        *           configurable: 表示该属性是否可以delete，同时也表示该属性的描述符，是否可以再次修改;
+        *           enumerable: 表示该属性是否可以通过 for-in，或者Object.keys()时获得该属性;
+        *           writable: 表示该属性是否可以set修改;
+        *           value: 表示属性的值，可以作为对象的新属性的值，也可以覆盖现有属性的值;
+        *      访问属性描述符:
+        *           set: 在对属性进行设置或修改时，会调用该函数，参数就是要setter的值
+        *           get: 在读取属性时，会调用该函数，返回值会作为读取到的数据
+        * 
+        * 注意: 在正常模式下，即使描述了属性的限制，也不会抛出异常，只是会忽略这些操作
+        * 如果在严格模式下，会直接抛出错误
+        * 
+        */
+
+    </script>
+</body>
+</html>

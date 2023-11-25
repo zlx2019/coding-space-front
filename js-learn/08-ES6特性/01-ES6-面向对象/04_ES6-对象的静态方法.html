@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的静态方法</title>
+</head>
+<body>
+    <script>
+        // 类的静态方法，也就是类方法,直接使用 static 修饰即可
+
+        class Person{
+            // 定义静态方法
+            static foo(){
+                console.log("Person - foo");
+            }
+        }
+        Person.foo() // Person - foo
+    </script>
+</body>
+</html>

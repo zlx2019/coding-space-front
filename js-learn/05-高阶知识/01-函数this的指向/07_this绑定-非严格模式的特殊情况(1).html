@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定的特殊情况</title>
+</head>
+<body>
+    <script>
+        // 正常模式下，使用null、undefined绑定到函数的this
+        function foo(){
+            console.log(`${this}, ${typeof this}`);
+        }
+        // 正常模式下，将字符串绑定到this中，会默认转为String包装类型
+        foo.apply("abc") // abc, object
+
+        // 正常模式下，将null、undefined绑定到函数的this中，会忽略该绑定,并且使用默认绑定，绑定到window对象
+        foo.apply(null) // [object Window], object
+        foo.apply(undefined) // [object Window], objec
+
+    </script>
+</body>
+</html>

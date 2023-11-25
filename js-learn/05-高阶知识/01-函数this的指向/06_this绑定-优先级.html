@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this绑定的优先级</title>
+</head>
+<body>
+    <script>
+        /**
+         * this绑定的优先级:
+         *  显式绑定 > 隐式绑定 > 默认绑定
+         *  new绑定 > 隐式绑定 > 默认绑定
+         *  new绑定 > 显式绑定(bind)
+         * 
+         * 经过验证后的详细顺序: 
+         *     new绑定 > bind绑定 > apply\call绑定 > 隐式绑定 > 默认绑定
+         */
+        
+         // 验证一: 隐式 > 默认
+         function foo(){
+            console.log(this);
+         }
+         var obj1 = {foo: foo}
+         // obj1对象 覆盖了 window对象，证明隐式绑定优先级高于默认绑定
+         obj1.foo() // {foo: ƒ}
+
+         // 验证二: 显式 > 隐式
+         // 使用apply调用一个对象函数(隐式绑定this)
+        var app = {
+            foo: function(){
+                console.log(this);
+            }
+        }
+        // 这里使用String包装类 覆盖了 app对象实例，证明显式优先级高于隐式
+        app.foo.apply("string") // String {'string'}
+
+        // 验证三: new绑定 > 隐式绑定
+        var obj2 = {
+            foo: function(){
+                console.log(this); // foo {}
+                console.log(this === obj2); // false
+            }
+        }
+        // 这里的this并没有指向 obj2实例，表示new绑定优先级高于隐式绑定
+        var o = new obj2.foo()
+
+
+        // 验证四: new绑定和 apply、call无法一起使用
+        // 只能和bind一起使用，验证这两者的优先级
+        function foo(){
+            console.log(this);
+        }
+        var fooFn = foo.bind("xxx")
+        // this 指向刚创建的新对象，并不是xxx
+        // 所以 new的优先级 高于 bind绑定
+        new fooFn() // foo {}
+
+
+        // 验证五: bind绑定 和 apply绑定的优先级
+        function run(){
+            console.log(this);
+        }
+        var runFn = run.bind("string")
+        runFn.apply(123) //  String {'string'}
+        // bind的优先级高于 apply
+    </script>
+</body>
+</html>

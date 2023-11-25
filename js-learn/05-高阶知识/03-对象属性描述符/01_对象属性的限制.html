@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象属性的控制</title>
+</head>
+<body>
+    <script>
+
+        // 默认情况下，一个对象的属性，是可修改、删除、遍历的
+        var obj = {
+            name: "张三",
+            age: 18
+        }
+        obj.name = "王五"
+        console.log(obj.name) // 王五
+        delete obj.name
+        console.log(obj); // {age: 18}
+
+        // 但是我们也可以通过一些手段，来描述对象中的哪些属性不能删除、不能修改、不能遍历、不能读取
+        // 这个就叫 属性描述符, 通过Object.defineProperty()来对属性进行描述
+    </script>
+</body>
+</html>

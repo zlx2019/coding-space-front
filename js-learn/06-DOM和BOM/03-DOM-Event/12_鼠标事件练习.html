@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件的练习</title>
+    <style>
+        .plate{
+            height: 300px;
+            width: 300px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div class="plate"></div>
+
+    <script>
+        var plateElem = document.querySelector('.plate')
+
+        // 1. 注册鼠标左键点击事件
+        // plateElem.addEventListener('click',function(e){
+        //     alert('鼠标左键，触发click事件~')
+        // })
+
+        // 2. 注册鼠标右键点击事件
+        // plateElem.addEventListener('contextmenu',function(e){
+        //     e.preventDefault() // 阻止事件默认行为，不展示右键菜单栏
+        //     alert(`鼠标右键，触发 contextmenu 事件, 点击位置 X:${e.offsetX} Y:${e.offsetY}`)
+        // })
+
+        // 3. 注册鼠标左键双击事件，与click事件冲突
+        // plateElem.addEventListener('dblclick',function(e){
+        //     alert('鼠标左键双击，触发 dblclick 事件.')
+        // })
+        
+        // 4.鼠标主键的长按事件
+        //  注册鼠标左键被按下事件
+        // plateElem.addEventListener('mousedown',function(e){
+        //     console.log(`鼠标主键被按下，触发 mousedown 事件, 按下位置 X:${e.offsetX} Y:${e.offsetY}`);
+        // })
+        // //  注册鼠标左键被松开事件
+        // plateElem.addEventListener('mouseup',function(e){
+        //     console.log(`鼠标主键被松开，触发 mouseup 事件, 松开位置 X:${e.offsetX} Y:${e.offsetY}`);
+        // })
+        // 这两种事件通常会组合来使用
+
+        // 5. 鼠标的悬浮与移开事件 mouseover - mouseout
+        // 注册鼠标移动到元素上时事件
+        // plateElem.addEventListener('mouseover',function(e){
+        //     console.log(`鼠标移动到元素上，触发 mouseover 事件`);
+        // })
+        // plateElem.addEventListener('mouseout',function(e){
+        //     console.log(`鼠标从元素上移开，触发 mouseout 事件`);
+        // })
+
+        // 6. 鼠标的悬浮与移开事件 mouseenter - mouseleave，该方式不支持事件冒泡
+        // plateElem.addEventListener('mouseenter',function(e){
+        //     console.log(`鼠标移动到元素上，触发 mouseenter 事件`);
+        // })
+
+        // plateElem.addEventListener('mouseleave',function(e){
+        //     console.log(`鼠标从元素上移开，触发 mouseleave 事件`);
+        // })
+
+        // 7. 注册鼠标移动事件
+        // plateElem.addEventListener('mousemove',function(e){
+        //     console.log(`鼠标在元素上移动，当前位置: X:${e.offsetX} Y:${e.offsetY}`);
+        // })
+
+    </script>
+</body>
+</html>

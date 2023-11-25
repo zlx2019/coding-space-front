@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数中this的默认绑定</title>
+</head>
+<body>
+    <script>
+        // 案例一
+        function foo(){
+            console.log(this);
+        }
+        // 当函数直接被调用时，此时会默认绑定到window对象
+        foo() // window
+
+
+        // 案例二
+        var app = {
+            bar: function(){
+                console.log(this);
+            }
+        }
+        // 虽然bar函数定义在对象中，但是由于我们将函数拿出来作为一个普通变量执行时
+        // this依然会被默认绑定为window对象
+        var bar = app.bar
+        bar() // window
+        // 所以说，函数中this的指向与，定义的位置无关，但是与调用方式与调用位置有关.
+
+        // 但是有一种特殊情况，就是在严格模式下，直接调用函数this的指向会是undefined，而不是window
+        // "use strict"
+    </script>
+    
+</body>
+</html>

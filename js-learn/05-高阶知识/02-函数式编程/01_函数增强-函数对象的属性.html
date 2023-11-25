@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数增强-函数对象的属性</title>
+</head>
+<body>
+    <script>
+        /**
+         * JavaScript中的函数，也属于一个对象，它拥有一些属性
+         */ 
+        // 定义函数
+        function foo(a,b,c){}
+
+        // 我们也可以自定义一些属性
+        foo.address = "广州"
+        console.log(foo.address); // 广州
+
+        // 一个函数，本身有两个内置属性
+        // 1. name: 函数的名称
+        // 2. length: 函数的参数(形参)个数
+        console.log(foo.name); // foo
+        console.log(foo.length); // 3
+
+        // 注意: length 属性，不包含设置默认值的形参，以及可变参数也不包含
+        function bar(a,b,c = 10,...args){}
+        console.log(bar.length); // 2
+    </script>
+</body>
+</html>

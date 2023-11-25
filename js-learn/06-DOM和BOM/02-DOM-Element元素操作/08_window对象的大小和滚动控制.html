@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取window的基本信息</title>
+</head>
+<body>
+
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <button class="top" hidden>回到顶部</button>
+    <button class="slide-top" hidden>动态回到顶部</button>
+
+    <script>
+        // 获取窗口window的信息
+
+        // 1. 获取window的整体高度和宽度(包含滚动条、导航条标签页等区域)
+        console.log(window.outerWidth);
+        console.log(window.outerHeight);
+
+        // 2. 获取window的内容区域(视口)的高度和宽度(包含滚动条)
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+
+        // 3. 获取html内容的宽度和高度(不包含滚动条)
+        console.log(document.documentElement.clientWidth);
+        console.log(document.documentElement.clientHeight);
+
+        // 监听 窗口的点击事件
+        window.onclick = function(){
+            // 4. 获取window窗口的滚动条滚动位置
+            // scrollX: X轴滚动条头部在X轴上的位置
+            // scrollY: Y轴滚动条头部在Y轴上的位置
+            console.log(`X轴(左右)滚动位置: ${window.scrollX}`);
+            console.log(`y轴(上下)滚动位置: ${window.scrollY}`);
+        }
+
+        // 监听窗口的 滚动事件
+        window.onscroll = function(){
+            if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
+                // 已经滚动到了底部(可能不精确)
+                var bs = document.querySelectorAll("button")
+                for(var btn of bs){
+                    btn.hidden = false
+                }
+            }
+        }
+
+        // 点击按钮,直接回到窗口顶部
+        document.querySelector('.top').onclick = function(){
+            window.scrollTo(0,0)
+        }
+
+        // 点击按钮，动态回到窗口顶部
+        document.querySelector('.slide-top').onclick = function(){
+            // 使用定时器
+            var backToTop = setInterval(() => {
+                var num = window.scrollY > 50 ? 50 : window.scrollY
+                window.scrollBy(0,-num)
+                if(window.scrollY <= 0){
+                    clearInterval(backToTop)
+                }
+            }, 20);
+        }
+
+    </script>
+</body>
+</html>

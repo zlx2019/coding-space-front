@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的arguments属性</title>
+</head>
+<body>
+    <script>
+        // 函数的 arguments 属性，存放着该函数被调用时传入的所有参数
+        // 它类似于数组，但它不是数组，它可以通过索引来获取参数
+        function foo(){
+            console.log(arguments.length);
+
+            // 通过迭代器访问
+            // for(var arg of arguments){
+            //     console.log(arg);
+            // }
+
+            // arguments 转 数组的方式
+            // 方式一
+            var argArray = Array.from(arguments)
+
+            // 方式二
+            var argArray2 = [...arguments]
+
+            // 方式三
+            var argArray3 = [].slice.apply(arguments)
+        }
+
+        foo(1,2,3) // 3
+        foo(1,2) // 2
+        foo() // 0
+    </script>
+</body>
+</html>

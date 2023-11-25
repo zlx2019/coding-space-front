@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5中的类方法</title>
+</head>
+<body>
+    <script>
+        // 所谓类方法，就是直接通过类可以调用的方法
+        // 而不需要创建实例对象，通过对象去访问
+        function Person(){}
+        // 在ES5中，如果想要为一个类，创建类方法
+        // 在本身的显示原型中添加是没用的
+        Person.prototype.running = function(){
+            // 错误做法
+        }
+        // 正确做法是,直接添加到类上
+        Person.say = function(){
+            console.log("say~");
+        }
+        Person.say()
+        // 也可以添加类属性
+        Person.globalData = "CONST"
+        console.log(Person.globalData);
+
+
+        // 如果想添加到所有的函数上，则需要添加到类的的隐式原型上，也就是Function.prototype
+        Person.__proto__.eating = function(){
+            console.log("eating~");
+        }
+        Function.prototype.running = function(){
+            console.log("running~");
+        }
+        Person.running() // running~
+        Person.eating() // eating~
+
+        function Foo(){}
+        Foo.running() // running~
+        Foo.eating() // eating~
+    </script>
+</body>
+</html>

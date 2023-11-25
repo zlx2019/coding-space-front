@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eval函数的作用</title>
+</head>
+<body>
+    <!-- 
+        内建 eval 函数是一个特殊的函数，它可以解析传入的字符串参数，作为一段js代码来解析，并且运行;
+        并且会将最后一句执行语句的结果，作为返回值
+     -->
+    <script>
+        // 如下
+        var jsText = `
+            var n1 = 10;
+            var n2 = 20;
+            n1 + n2;
+        `
+        var sum = eval(jsText)
+        console.log(sum); // 30
+
+    </script>
+</body>
+</html>

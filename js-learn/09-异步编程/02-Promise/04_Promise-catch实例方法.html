@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise的catch方法，主要用于注册Promise更新为 rejected 状态后的处理函数
+        //
+        // 当一组Promise执行链中，其中某个Promise触发reject后，
+        // 则会寻找注册了catch的Promise，并且进行回调;
+        // 寻找规则为自己下游并且最近的一个Promise
+        var p = new Promise((resolve,reject)=>{
+            // 执行then回调
+            console.log(`第1个Promise执行.`);
+            resolve(0)
+
+            // 如果reject后，将会直接进入到最后一个Promise的catch回调中
+            // reject("第一个Promise 已拒绝")
+        })
+        // 
+        p.then(res=>{
+            console.log(`第2个Promise执行.`);
+            return ++res
+        }).then(res=>{
+            throw new Error("自定义错误")
+            console.log(`第3个Promise执行.`);
+            return ++res
+        }).then(res=>{
+            console.log(`第4个Promise执行.`);
+        }).catch(err=>{
+            console.log("捕获到reject状态: ",err);
+        })
+
+        // 第1个Promise执行.
+        // 第2个Promise执行.
+        // 捕获到reject状态:  Error: 自定义错误
+    </script>
+</body>
+</html>

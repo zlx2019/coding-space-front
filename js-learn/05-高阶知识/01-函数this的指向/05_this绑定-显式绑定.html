@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数this的显示绑定</title>
+</head>
+<body>
+    <script>
+        /**
+         * 显示绑定this，就是在调用一个函数时，强制指定函数的this指向，有如下几种方式:
+         *  - fn.call(obj,args...)
+         *  - fn.apply(obj,)
+         *  - fn.bind()
+         * 
+         */
+
+         // 定义一个独立函数
+         function foo(name,age){
+            this.name = name
+            this.age = age
+            console.log(this);
+         }
+         // 直接调用，不用多说，指向window
+         foo() // window
+
+         // 定义临时空对象
+         var app = {}
+
+         // 方式一: 通过call()函数
+         // 手动调用一个函数的同时，将this指向app对象
+         foo.call(app,"zhangsan",18) // {name: 'zhangsan', age: 18}
+
+         // 方式二: 通过 apply()函数
+         // 与call()不同的是传递参数方式，以数组形式传递，而不是用可变参数
+         foo.apply(app,["wangwu",28]) // {name: 'wangwu', age: 28}
+
+         // call 和 apply 只会在调用时绑定this，这样每次绑定都需要通过这两种方法，有些过于复杂
+         foo() // window
+         // 再次独立调用该函数时，this依然指向window对象
+         // 所以js还提供了另一种方式，将一个函数的this全局绑定到一个对象上
+
+         // 方式三: 通过bind()函数，将一个函数的this绑定到一个对象上，返回一个新的函数
+         // 这个新的函数的this就会与指定的对象绑定到一起
+         // 这样无论调用多少次，this都是不会变
+         var new_foo = foo.bind(app)
+         new_foo("zhaoliu",78) // {name: 'zhaoliu', age: 78}
+         new_foo("lisi",57) // {name: 'lisi', age: 57}
+
+    </script>
+</body>
+</html>

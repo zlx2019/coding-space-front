@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器补充</title>
+</head>
+<body>
+    <!-- 
+        有时候我们不想立即执行一个函数，而是想延迟一定的时间后再执行;
+        目前有两种方式可以实现:
+            - window.setTimeout(fn,time)
+                推迟time毫秒后，再执行fn函数;
+            - window.setInterval(fn,time)
+                延迟time毫秒后，执行依次fn函数，然后每隔time毫秒后执行一次fn函数;
+            语法如下:
+            id = setTimeout(fn,delay,args...)
+                fn: 要执行的函数
+                delay: 延迟的毫秒数
+                args: fn函数的参数
+        对应的取消方法:
+            - clearTimeout(id): 取消setTimeout定时器
+            - clearInterval(id): 取消setInterval定时器
+     -->
+
+     <script>
+        // 启动一个定时器,每隔1秒输出一句 hello world
+        var task = setInterval(() => {
+            console.log("hello world");
+        }, 1000);
+
+        // 10秒后，关闭定时器
+        setTimeout(() => {
+            // 关闭定时器
+            clearInterval(task)
+            console.log("定时器已关闭.");
+        }, 10_000);
+     </script>
+</body>
+</html>

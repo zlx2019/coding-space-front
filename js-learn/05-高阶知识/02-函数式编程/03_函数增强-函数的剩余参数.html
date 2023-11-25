@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的剩余参数</title>
+</head>
+<body>
+    <script>
+        // 剩余参数，也就是除了指定好的参数之外，额外传递的参数
+        const foo = (n1,n2,...agrs) => {
+            console.log(`n1: ${n1} n2: ${n2}`);
+            console.log(`剩余参数: ${agrs}`);
+        }
+
+        foo(1,2,3,4,5,6) 
+        // n1: 1 n2: 2
+        // 剩余参数: 3,4,5,6
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+</head>
+<body>
+    <!-- 
+        键盘事件
+            - onkeydown:    某个按键被按下事件
+            - onkeypress:   某个按键被按下事件(优先级弱于onkeydown)
+            - onkeyup :     某个按键被松开事件
+        这三个事件的详细执行顺序:
+            1. onkeydown - 按键被按下时;
+            2. onkeypress - 按键对应的内容被输入时;
+            3. onkeyup - 按键内容输入完成时;
+     -->
+     <input type="text">
+     <script>
+        var inputElem = document.querySelector('input')
+        // 注册 按键被按下事件
+        inputElem.onkeydown = function(e){
+            console.log(`按键: ${e.key}被按下, ${e.code} ${e.keyCode}`);
+            // 如果按下回车键，清除文本框的内容
+            if(e.code === "Enter"){
+                e.target.value = ""
+            }
+        }
+        // 注册 按键被松开事件
+        inputElem.onkeyup = function(e){
+            console.log(`按键: ${e.key}被松开`);
+        }
+
+        // 按s键，让输入框进入焦点
+        document.onkeyup = function(e){
+            if(e.code === "KeyS"){
+                inputElem.focus()
+            }
+        }
+     </script>
+</body>
+</html>

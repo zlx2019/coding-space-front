@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this关键字的指向分析</title>
+</head>
+<body>
+    <script>
+        /**
+         * 在JavaScript中，一个函数的this指向，取决于函数的调用方式和调用位置;
+         * 并且this的指向是在运行时绑定的，绑定规则有如下几种:
+         *  1. 默认绑定
+         *      当直接调用一个独立函数时，则会默认绑定一个全局对象
+         *      (1) 在浏览器中绑定的是window
+         *      (2) 在node中绑定的是Object [global]
+         *      (3) 如果是严格模式下，那么this会是undefiend
+         * 
+         *  2. 隐式绑定
+         *      通过一个对象实例，调用一个函数时，该函数的this会指向这个对象本身
+         *  
+         *  3. 通过new绑定
+         *      当函数通过，new操作符调用时，会在内部生成一个新的空对象，并且将this绑定到这个对象中，
+         *      所以这种情况下this指向的也是一个对象的实例，也就是构造函数即将返回的实例;
+         * 
+         *  4. 显式绑定
+         *      通过call | apply | bind 进行手动绑定this.
+         */
+    </script>
+</body>
+</html>

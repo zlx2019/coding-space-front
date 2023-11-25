@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * Promise.any()
+         *  获取最先执行完成，并且是resolve的Promise
+         */
+        const task1 = new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                reject("错误信息1001")
+            }, 1000);
+        })
+        const task2 = new Promise((resolve)=>{
+            setTimeout(() => {
+                resolve(2001)
+            }, 3000);
+        })
+
+        Promise.any([task1,task2])
+            .then(res=>{
+                console.log(res); // 2001
+            }).catch(err=>{
+                console.log(err);
+            })
+
+        // 如果所有的Promise都是reject，那么会在catch中返回一个 AggergateError异常
+    </script>
+</body>
+</html>

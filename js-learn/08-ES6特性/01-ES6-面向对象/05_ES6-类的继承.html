@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6类的继承</title>
+</head>
+<body>
+    <script>
+
+        // 父类
+        class Person{
+            constructor(name, age){
+                this.name = name
+                this.age = age
+            }
+            running(){
+                console.log("Person - running");
+            }
+        }
+
+        // 子类
+        class Student extends Person{
+            constructor(name,age,score){
+                // 调用父类的构造器
+                super(name,age)
+                this.score = score
+            }
+            running(){
+                console.log("Student - running");
+            }
+            studying(){
+                console.log("Student - studying");
+            }
+        }
+
+        var stu = new Student("zhangsan",18, 98)
+        console.log(stu); // {name: 'zhangsan', age: 18, score: 98}
+        stu.running() // Student - running
+        stu.studying() // Student - studying
+    </script>
+</body>
+</html>

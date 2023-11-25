@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源加载事件</title>
+</head>
+<body>
+    <!-- 
+        DOMContentLoaded 事件:
+            当浏览器已经加载完HTML，并且构建了DOM树，但是一些异步资源还没加载完时执行;
+            - 该事件不会等待图片资源、异步脚本等加载;
+            - 优先级高于 load 事件
+        load 事件:
+            当浏览器加载所有的资源时，如html、DOM树，包括所有外部资源：图片、样式等.
+     -->
+    <img class="image" src="https://zlx2019.github.io/img/logo/Gin-logo.webp">
+    <script>
+        // 注册 load 事件，
+        window.onload = function(e){
+            console.log("执行 window onload 事件.");
+        }
+
+        // 注册 DOMContentLoaded 事件
+        window.addEventListener('DOMContentLoaded',function(e){
+            console.log("执行 window DOMContentLoaded 事件.");
+        })
+        // 为img 元素 注册 load 事件
+        document.querySelector('.image').onload = function(e){
+            console.log("执行 img onload 事件，网络图片加载完毕.");
+        }
+
+        // 执行顺序: 
+        // 执行 window DOMContentLoaded 事件.
+        // 执行 img onload 事件，网络图片加载完毕.
+        // 执行 window onload 事件.
+    </script>
+</body>
+</html>

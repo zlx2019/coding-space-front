@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Promise.all(Promise[])
+            将多个Promise组合形成一个新的Promise:
+             - 所有的Promise状态都为 fulfilled，新的Promise状态即为fulfilled，并且参数为所有Promise的返回值组成的数组;
+             - 当有一个Promise状态为 rejected时，新的Promise状态即为 rejected，并且将第一个reject的Promise返回值作为参数;
+     -->
+    <script>
+
+        // 创建多个Promise任务
+        // 任务一
+        const task1 = new Promise((resolve)=>{
+            // 延迟1秒后resolve
+            setTimeout(() => {
+                resolve(1001)
+            }, 1000);
+        })
+        // 任务二
+        const task2 = new Promise((resolve)=>{
+            // 延迟3秒后resolve
+            setTimeout(() => {
+                resolve(2001)
+            }, 3000);
+        })
+        // 任务三
+        const task3 = new Promise((resolve)=>{
+            // 延迟8秒后resolve
+            setTimeout(() => {
+                resolve(3001)
+            }, 8000);
+        })
+
+        // 等待所有的Promise都执行完毕
+        Promise.all([task1,task2,task3])
+            .then(results=>{
+                // 等待8s后...
+                console.log(results); // [1001,1002,1003]
+            }).catch(err=>{
+                console.log("存在Promise执行失败: ",err);
+            })
+
+        // 创建一个执行失败的Promise
+        const task4 = new Promise((resolve,reject)=>{
+            reject("task4 手动reject.")
+        })
+        Promise.all([task1,task2,task4])
+            .catch(err=>{
+                console.log("存在Promise执行失败: ",err); // task4 手动reject.
+            })
+    </script>
+</body>
+</html>

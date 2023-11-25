@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象的方法解析</title>
+</head>
+<body>
+    <!-- 
+        event的常用方法:
+            - preventDefault() 阻止事件默认行为
+            - stopPropagation() 阻止事件的传递(捕获或冒泡都会阻止)
+
+     -->
+    <a href="http://www.baidu.com">百度一下</a>
+    <script>
+        // 某些元素的一些事件，自带一些默认行为
+        // 如a标签，默认会跳转到href地址，我们也可以手动阻止元素的默认行为
+        var aElem = document.querySelector('a')
+        // 为a元素设置点击事件
+        aElem.onclick = function(event){
+            console.log("点击了超链接");
+            // 阻止默认的事件行为
+            event.preventDefault()
+        }
+    </script>
+</body>
+</html>

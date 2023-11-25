@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定的方式</title>
+</head>
+<body>
+    <!-- 方式一(不推荐)： 在内联样式中，编写js -->
+    <button class="btn1" onclick="alert('第一种绑定方式.')">按钮1</button> 
+    <button class="btn2">按钮2</button>
+    <button class="btn3">按钮3</button>
+
+    <script>
+        // 方式二: 通过DOM元素绑定事件
+        var elem = document.querySelector('.btn2')
+        elem.onclick = function(){
+            alert('第二种绑定方式')
+        }
+        // 方式三: 通过 addEventListener(eventName,fn)方法 添加监听回调
+        // 推荐，这种方式可以为一种事件绑定多个函数
+        document.querySelector('.btn3').addEventListener('click', function(){
+            alert('第三种绑定方式')
+        })
+
+        
+    </script>
+</body>
+</html>

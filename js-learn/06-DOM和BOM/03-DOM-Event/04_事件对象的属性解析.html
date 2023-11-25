@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象的属性解析</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button class="btn">按钮</button>
+    </div>
+
+    <script>
+        var divElem = document.querySelector('.box')
+        var btnElem = document.querySelector('.btn')
+
+        /**
+         * 浏览器会在每个事件触发时，执行回调函数时，传递一个参数，它就是事件对象(Event)
+         * 所有事件相关的信息，都存储在该对象中,常见的属性和方法:
+         * 
+         *  - type: 事件的类型; 如click、chenge
+         *  - target: 产生该事件的根元素，事件流的源泉;
+         *  - currentTarget: 当前事件流中正在处理的元素;
+         *  - eventPhase: 事件处理阶段; 1: 捕获阶段, 2: 正处理事件流源泉阶段  3:冒泡阶段
+         * 
+         *  - offsetX，offsetY: 事件发生在元素内的x、y轴位置;
+         *  - clinetX，clinetY: 事件发生的位置，相对于客户端的位置;
+         *  - pageX，pageY: 事件发生的位置，相对于页面的位置;
+         *  - screenX,screenY: 事件发生的位置，相对于整个屏幕;
+         */
+        // 绑定按钮的点击事件
+        btnElem.onclick = function(event){
+            console.log(`事件的类型: ${event.type}`); // click
+            console.log(`事件的阶段: ${event.eventPhase}`); // 2
+            console.log(`产生事件的元素: ${event.target.tagName}`); // BUTTON
+            console.log(`事件流中当前正在处理的元素: ${event.currentTarget.tagName}`); // BUTTON
+        }
+
+
+        // 绑定div的点击事件
+        divElem.onclick = function(event){
+            console.log(`在div元素内 鼠标点击事件的位置: X: ${event.offsetX}, Y: ${event.offsetY}`);
+            console.log(`事件的阶段: ${event.eventPhase}`); // 3
+            console.log(`产生事件的元素: ${event.target.tagName}`); // BUTTON
+            console.log(`事件流中当前正在处理的元素: ${event.currentTarget.tagName}`); // DIV
+        }
+
+    </script>
+</body>
+</html>
