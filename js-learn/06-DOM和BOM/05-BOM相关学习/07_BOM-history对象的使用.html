@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history对象的使用</title>
+</head>
+<body>
+    <button class="pushState">通过pushState-修改url地址</button>
+
+    <script>
+        /**
+         * 通过 history 对象我们可以访问浏览器曾经的会话历史记录
+         *  该对象有两个属性:
+         *      - length: 会话中的记录条数;
+         *      - state: 当前保留的状态值;
+         *  该对象的方法:
+         *      - go(number): 进入到某一页会话，整数为前进，负数为后退; 
+         *      - back(): 后退上一页会话, 等同于 history.go(-1);
+         *      - forward(): 前进下一页会话，等同于 history.go(1);
+         * 
+         *      - pushState(data,unused,url): 修改地址栏的url，进入一个新的会话;
+         *          data: 进入新的会话携带的数据(状态);
+         *          unused: 该值不使用，直接传入空字符串即可;
+         *          url: 要修改的url值;
+         * 
+         *      - replaceState(): 打开一个新的会话，直接从历史记录中替换掉当前会话,替换后，将无法回退;
+         */
+
+        // 默认打开网页后的为第一个会话，只存在一个会话，并且没有状态值
+        console.log(history.length); // 1
+        console.log(history.state); // null
+
+
+        // 1. 通过 history.pushState() 打开一个新的会话
+        document.querySelector(".pushState").onclick = function(){
+            // 创建一个对象，作为状态数据，携带进新会话中
+            var stateData = {
+                "name": "zhangsan",
+                "age": 18
+            }
+            // 修改url,打开一个新的会话
+            history.pushState(stateData,"", "/users")
+            console.log(`修改后的url: ${location.href}`); // 修改后的url: http://localhost:5500/users
+            console.log(`修改后的会话数量: ${history.length}`); // 修改后的会话数量: 2
+            console.log(`新的会话的状态值: ${history.state}`); // {"name": "zhangsan","age": 18}
+        }
+
+    </script>
+</body>
+</html>

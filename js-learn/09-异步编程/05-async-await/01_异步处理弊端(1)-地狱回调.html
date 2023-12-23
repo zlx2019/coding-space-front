@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步处理的弊端-地狱回调</title>
+</head>
+<body>
+    <!-- 
+        在学习 async + await 语法前，我们从一个简单的需求入手;
+        假设现在有这样一个需求
+            1. 发送一个网络请求，并且获取返回数据;
+            2. 待第一个请求完成后，再次发送第二个网络请求，并且使用第一个请求的响应数据作为该次请求的请求参数;
+            3. 获取第二个网络请求的响应数据，作为第三个网络请求的请求参数;
+        简单来说就是将多个异步请求，串行化执行，并且它们之间是强关联的;
+        下面我们使用Promise来实现该需求
+     -->
+    <script>
+        // 定义第一个请求
+        new Promise((resolve,reject)=>{
+            resolve(100)
+        }).then(res=>{
+            console.log(`第一个请求响应数据: ${res}`);
+            // 定义第二个请求
+            new Promise((resolve,reject)=>{
+                resolve(res + 100)
+            }).then(res=>{
+                console.log(`第二个请求响应数据: ${res}`);
+                // 定义第三个请求
+                new Promise((resolve,reject)=>{
+                    resolve(res + 100)
+                }).then(res=>{
+                    // 最终的响应结果
+                    console.log(`第三个请求响应数据: ${res}`);
+                })
+            })
+        })
+        // 这就是传说中的地狱回调(callback hell)，而且这还只是三个异步请求，倘若5个、10个呢?
+    </script>
+</body>
+</html>

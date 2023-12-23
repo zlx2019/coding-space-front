@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步函数的异常</title>
+</head>
+<body>
+    <!-- 
+        异步函数的返回值，必定是一个Promise对象，那么在异步函数中，如何使返回的Promise为rejected状态呢?
+        有如下几种方式: 
+            - (主动式) 手动return一个 Promise，并且在该Promise对象中调用reject方法;
+            - (主动式) 手动 thorw 一个异常，会隐式使用Promise.reject()包裹后返回;
+            - (被动式) 在异步函数中发生异常后，会隐式的使用Promise.reject()方法包裹后返回(其实本质上就是上一种方式);
+     -->
+    <script>
+        // 方式一
+        async function foo(){
+            return new Promise((_,reject)=>{
+                reject("手动返回一个reject的Promise")
+            })
+        }
+
+        foo().catch(err=>{
+            console.log(`捕获到foo异步函数的reject: ${err}`); // 捕获到foo异步函数的异常: 手动返回一个reject的Promise
+        })
+
+        // 方式二(被动式)
+        async function bar(){
+            "abc".filter()
+        }
+        bar().catch(err=>{
+            console.log(`捕获到bar异步函数的reject: ${err}`); // 捕获到bar异步函数的reject: TypeError: "abc".filter is not a function
+        })
+        
+        // 方式三
+        async function baz(){
+            throw new Error("手动抛出一个异常")
+        }
+        baz().catch(err=>{
+            console.log(`捕获到baz异步函数的异常: ${err.message}`);
+        })
+    </script>
+</body>
+</html>

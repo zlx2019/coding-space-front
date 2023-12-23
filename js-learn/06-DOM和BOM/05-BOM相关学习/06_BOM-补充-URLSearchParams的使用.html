@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URLSerachParams的使用</title>
+</head>
+<body>
+    <script>
+        /**
+         * URLSerachParams可以用来解析或者转换URL的query查询内容;
+         * 可用方法如下:
+         *  - get 根据key获取属性值
+         *  - set 设置一对属性值
+         *  - append 追加一个kv属性
+         * 
+         */
+        let query = "?name=root&password=admin&age=18"
+
+        // 获取url的query内容
+        let  queryParams = new URLSearchParams(query)
+        // 添加属性
+        queryParams.set("address","北京")
+        queryParams.append("no",999)
+        // 根据key获取query的内容
+        console.log(queryParams.get("name")); // root
+        console.log(queryParams.get("password")); // admin
+        console.log(queryParams.get("age")); // 18
+        console.log(queryParams.get("address")); // 北京
+        console.log(queryParams.get("no")); // 999
+
+        // 判断一个属性是否存在
+        console.log(queryParams.has("name")); // true
+        console.log(queryParams.has("username")); // false
+
+        // 删除一个属性
+        queryParams.delete("address")
+        console.log(queryParams.has("address")); // false
+
+        // 转为字符串
+        console.log(queryParams.toString()); // name=root&password=admin&age=18&no=999
+
+        // 如果属性中包含中文，则会使用 encodeURIComponent()和 decodeURIComponent() 进行解码和编码        
+    </script>
+</body>
+</html>

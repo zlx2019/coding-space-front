@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location对象的使用</title>
+</head>
+<body>
+    <button id="assign">跳转到百度</button>
+    <button id="replace">跳转到百度(无法再次回退)</button>
+    <button id="reload">重新加载当前页面</button>
+    <script>
+        /**
+         * window.location 对象表示当前window所链接到的URL信息; 
+         * 该对象包含如下URL信息:
+         *  - href: 当前window对应的链接地址的完整URL;
+         *  - protocol: 使用的协议(http/https);
+         *  - host: 主机地址(IP + Port);
+         *  - hostname: 主机地址(IP);
+         *  - port: 端口;
+         *  - pathname: 访问path;
+         *  - search: query查询字符串;
+         *  - hash: 哈希值;
+         */
+        console.log(`${location.href}`); // http://localhost:5500/js/xxxx.html?name=zhangsan#123
+        console.log(`${location.protocol}`); // http:
+        console.log(`${location.host}`); // localhost:5500
+        console.log(`${location.hostname}`); // localhost
+        console.log(`${location.port}`); //  5500
+        console.log(`${location.pathname}`); // /js/xxxx.html
+        console.log(`${location.search}`); // ?name=zhangsan
+        console.log(`${location.hash}`); // #123
+
+        // location的方法有如下
+        // assign(url): 根据指定的url，跳转到指定的url页面;
+        // replace(url): 根据指定的url，使用该url页面替换当前页面(不属于跳转，所以不保留历史记录，无法退回);
+        // reload(): 重新加载当前页面
+
+        document.querySelector("#assign").onclick = function(){
+            location.assign("http://www.baidu.com")
+        }
+        document.querySelector("#replace").onclick = function(){
+            location.replace("http://www.baidu.com")
+        }
+        document.querySelector("#reload").onclick = function(){
+            location.reload()
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>普通函数与异步函数的区别</title>
+</head>
+<body>
+    <!-- 
+        异步函数与普通函数的区别:
+
+         - 返回值区别
+            1. 普通函数若没有返回值，则默认返回值为undefiend;
+            2. 异步函数的返回值必须由Promise所包裹，若没有指定返回值，默认则会返回一个Promise.resolve(undefeind);
+            3. 如果异步函数的返回值指定为其他类型，则会隐式使用Promise.resolve()所包裹后返回;
+        补充: 
+            如果异步函数返回值也是一个Promise,那么状态则由这个Promise所决定;
+
+     -->
+    <script>
+        function foo(){}
+        async function bar(){}
+        async function baz(){
+            // return "hello"
+            // 这里等同于
+            return Promise.resolve("hello")
+        }
+        console.log(foo()); // undefined
+        console.log(bar()); // Promise {<fulfilled>: undefined}
+        console.log(baz()); // Promise {<pending>}
+    </script>
+</body>
+</html>

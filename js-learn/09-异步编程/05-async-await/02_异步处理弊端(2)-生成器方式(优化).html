@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用生成器来优化弊端</title>
+</head>
+<body>
+    <!-- 
+        本小节我们来优化以下使用生成器解决异步请求
+     -->
+    <script>
+        // 定义一个生成器函数，用来控制多个异步请求的执行流程
+        function * getData(){
+            // 发送第一个请求
+            const res1 = yield new Promise((resolve)=>resolve(100))
+            console.log(`第一个请求响应数据: ${res1}`);
+            
+            // 发送第二个请求
+            const res2 = yield new Promise((resolve)=>resolve(res1 + 100))
+            console.log(`第二个请求响应数据: ${res2}`);
+            
+            // 发送第三个请求
+            const res3 = yield new Promise((resolve)=>resolve(res2 + 100))
+            console.log(`第三个请求响应数据: ${res3}`);
+
+            // 发送第四个请求
+            const res4 = yield new Promise((resolve)=>resolve(res3 + 100))
+            console.log(`第四个请求响应数据: ${res4}`);
+        }
+
+
+        // 定义一个函数，作为生成器的执行器，来自动执行一个生成器;
+        function generatorRunner(generatorFn){
+            // 调用生成器函数，获取生成器对象
+            const generator = generatorFn()
+
+            // 执行函数，递归调用
+            function run(...args){
+                // 循环调用生成器next()方法，执行生成器
+                // resp = {done: true/false, value: any}
+                const result = generator.next(...args)
+                if(result.done){
+                    // 生成器执行完毕，结束递归;
+                    return
+                }
+                // 生成器还未执行完毕，继续递归调用
+                // 将本次执行完的结果，作为下一次执行的参数
+                result.value.then(res=>{
+                    run(res)
+                })
+            }
+            // 执行生成器
+            run()
+        }
+        // 通过执行器，执行生成器函数
+        generatorRunner(getData)
+        // 第一个请求响应数据: 100
+        // 第二个请求响应数据: 200
+        // 第三个请求响应数据: 300
+        // 第四个请求响应数据: 400
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过属性的描述符，实现属性的监听</title>
+</head>
+<body>
+    <script>
+        // 在早期，我们想实现对一个对象的属性进行监听，可以通过setter与getter描述符来实现
+        // 这也是Vue2响应式采用的原理，如下
+        const obj = {
+            name: "zhangsan",
+            age: 18,
+            address: "北京"
+        }
+        // 遍历对象的所有key，为每个key设置settet与getter访问描述符
+        for(const key of Object.keys(obj)){
+            // 属性值
+            let value = obj[key]
+            Object.defineProperty(obj,key,{
+                set: function(newVal){
+                    console.log(`${key} 属性触发settet, 设置的值: ${newVal}`);
+                    value = newVal
+                },
+                get: function(){
+                    console.log(`${key} 属性触发getter操作, 获取的值: ${value}`);
+                    return value
+                }
+            })
+        }
+        obj.name // name 属性触发getter操作, 获取的值: zhangsan
+        obj.age  // age 属性触发getter操作, 获取的值: 18
+        
+        obj.address // address 属性触发getter操作, 获取的值: 北京
+        obj.address = "广州" // address 属性触发settet, 设置的值: 广州
+        obj.address // address 属性触发getter操作, 获取的值: 广州
+
+        // 这种方式存在一些弊端:
+        // - 从设计初衷来说，Object.defineProperty并不是为了监听对象来设计的
+        // - 所以从能力上来说，还欠缺一些东西，比如新增属性、删除属性等等
+        // - 属性冗余，每个被监听的属性，必须存储在另一个属性身上。
+    </script>
+</body>
+</html>

@@ -8,18 +8,20 @@
 <body>
     <script>
         var obj = {
-            name: "zhangsna"
+            _name: "zhangsna"
         }
         // Vue2的数据响应式就是使用的该方式
         Object.defineProperty(obj,"name",{
             set: (value)=> {
-                console.log(`name属性被设置 value: ${value}`);
+                console.log(`触发 obj name属性 settet操作,setVal: ${value}`);
+                obj._name = value
             },
-            // get: () => {
-            //     console.log("读取 obj name 属性");
-            // }
+            get: () => {
+                console.log("触发 obj name属性 getter操作");
+                return obj._name
+            }
         })
-
+        obj.name // 读取 obj name 属性
         obj.name = "qwe" // name属性被设置 value: qwe
     </script>
 </body>

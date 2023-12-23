@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy是什么</title>
+</head>
+<body>
+    <!-- 
+        在ES6中，新增了一个Proxy类，名为代理类;
+            Proxy 对象用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等);
+            使用Proxy，有如下概念:
+                - 目标对象: 也就是要被代理的源对象
+                - 代理对象: 源对象的操作，都由代理对象来完成；
+     -->
+     <script>
+        // 1. 定义目标对象
+        let obj = {
+            name: "张三",
+            age: 18
+        }
+
+        /**
+         * 2. 创建代理对象
+         * new Proxy(obj,handle)
+         * obj: 被代理的目标对象 
+         * handler: 代理处理器,可以在处理器里添加属性的捕获器,用于监听属性的变化
+         */
+        // 处理器
+        const handler = {}
+        const objProxy = new Proxy(obj,handler)
+
+        // 3. 通过代理对象，访问目标对象数据
+        console.log(objProxy.name); // 张三
+        console.log(objProxy.age); // 18
+
+     </script>
+</body>
+</html>

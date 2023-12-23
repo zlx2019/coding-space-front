@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window对象的详细作用</title>
+</head>
+<body>
+
+    <button class="baidu">打开百度</button>
+    <button class="close">关闭当前网页</button>
+    <script>
+        /**
+         * window对象作为运行环境的全局对象，包含了非常非常多的数据，如下所示
+         *  - 包含的属性: localStorage、console、location、history等(大概60多个属性)
+         *  - 包含的方法: alert、close、scrollTo、open等(大概40多个方法)
+         *  - 包含的事件: focus、blur、load、hashchange等(大概30多个事件)
+         */
+
+
+        
+         // 常用方法补充
+         // 1. open(url,target) 打开一个新的网页
+         // url: 新的网页地址
+         // target: 打开方式
+         let baiduWindow = null
+         document.querySelector(".baidu").onclick = function(){
+            // 打开一个新的网页，获取该窗口对象
+            baiduWindow = window.open("http://baidu.com")
+         }
+
+         // 2. close() 关闭当前网页
+         document.querySelector(".close").onclick = function(){
+            // 关闭打开的百度窗口
+            // 如果 baiduWindow 不为空，则调用 close()方法
+            baiduWindow?.close()
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator对象的使用</title>
+</head>
+<body>
+    <!-- 
+        navigator 对象表示用户代理的相关信息，也就是浏览器本身的相关信息;
+        通过该对象可以拿到一些客户端浏览器信息，具体信息请参考: https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator
+     -->
+    <script>
+        console.log(`浏览器是否联网: ${navigator.onLine}`);
+        console.log(`浏览器版本信息: ${navigator.appVersion}`);
+        console.log(`浏览器是否启用cookie: ${navigator.cookieEnabled}`);
+        console.log(`浏览器架构平台: ${navigator.platform}`);
+        console.log(`浏览器厂商: ${navigator.vendor}`);
+        console.log(`浏览器代理信息:${navigator.userAgent}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 之前我们学了WeakSet和WeakMap，这两种数据结构的元素，都是使用弱引用,但是这种是不需要我们手动处理的;
+         * 我们如何获取一个对象的弱引用呢？在ES12中提供了WeakRef对象
+         * WeakRef对象允许保留另一个对象的弱引用，并且不会阻碍另一个对象被GC回收;
+         */
+        // 定义一个对象
+        let obj = {
+            name: "张三",
+            age: 18
+        }
+        // 获取该对象的弱引用
+        let objWeakRef = new WeakRef(obj)
+
+        // 当我们想通过弱引用获取引用的对象时，需要先解引用
+        // 注意: 如果引用的对象已经被回收掉了，那么解引用出的可能是undefined
+        console.log(objWeakRef.deref()); // {name: '张三', age: 18}
+
+        // 将对象置为不可达
+        obj = null
+        // 当引用的对象被回收后，则解引用后获得undefined
+        setTimeout(() => {
+            // console.log(objWeakRef.deref()); // undefined
+        }, 10000);
+        
+    </script>
+</body>
+</html>

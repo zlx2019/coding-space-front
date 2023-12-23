@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 使用 Proxy + Reflect 完成对象的代理,实现属性的监听，这是Vue3的响应式原理
+        // 创建目标对象user
+        const user = {}
+        // 为目标对象创建代理对象
+        const userProxy = new Proxy(user,{
+            // setter拦截
+            set(target,property,value,receiver){
+                if(!Reflect.set(target,property,value)){
+                    console.log(`setter: 为 user 对象设置${property}属性失败.`);
+                }else{
+                    console.log(`setter: 为 user 对象设置${property}属性成功，值为:${value}`);
+                }
+            },
+            // getter拦截
+            get(target,property,receiver){
+                const value = Reflect.get(target,property)
+                console.log(`getter: 获取 user 对象的${property}属性，值为:${value}`);
+                return value
+            }
+        })
+
+        // 通过代理对象，来操作目标对象
+        userProxy.uname = "张三" // setter: 为 user 对象设置uname属性成功，值为:张三
+        userProxy.uname // getter: 获取 user 对象的uname属性，值为:张三
+    </script>
+</body>
+</html>

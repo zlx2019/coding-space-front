@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用async+await进一步优化案例</title>
+</head>
+<body>
+    <!-- 
+        本节我们将使用 async + await 语法无缝替换 生成器方式;
+     -->
+    <script>
+        // 这里将生成器函数，更改为 async函数
+        async function getData(){
+            // 将所有的 yield 表达式，更改为 await 表达式
+
+            // 发送第一个请求
+            const res1 = await new Promise((resolve)=>resolve(100))
+            console.log(`第一个请求响应数据: ${res1}`);
+            
+            // 发送第二个请求
+            const res2 = await new Promise((resolve)=>resolve(res1 + 100))
+            console.log(`第二个请求响应数据: ${res2}`);
+            
+            // 发送第三个请求
+            const res3 = await new Promise((resolve)=>resolve(res2 + 100))
+            console.log(`第三个请求响应数据: ${res3}`);
+        }
+
+        // 直接调用 async 异步函数即可，就像调用普通函数那样
+        // 第一个请求响应数据: 100
+        // 第二个请求响应数据: 200
+        // 第三个请求响应数据: 300
+
+        // 其实本质上，async 和 await 就是生成器处理Promise的语法糖;
+        getData()
+    </script>
+</body>
+</html>

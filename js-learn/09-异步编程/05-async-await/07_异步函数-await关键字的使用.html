@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await关键字的使用</title>
+</head>
+<body>
+    <!--
+        await关键字，可以将多个Promise异步执行，变更为串行化同步执行;
+        await关键字的使用条件:
+            - await 关键字只能在异步函数中使用;
+            - await 的右值表达式会返回一个Promise，该函数的执行会阻塞到这里，直到Promise状态变为fulfilled后才会继续往下执行;
+            - 如果Promise的状态为fulfilled，则会获取其resolve()的参数，作为返回值;
+            - 如果Promise的状态为rejected，则会导致当前异步函数直接抛出异常;
+     -->
+    <script>
+        function getNumber(num,sleep){
+            return new Promise((resolve)=>{
+                setTimeout(() => {
+                    resolve(num)
+                }, sleep);
+            })
+        }
+
+        async function foo(){
+            const v1 = await getNumber(100,1000)// 延迟1s 后获得100
+            const v2 = await getNumber(200,2000)// 延迟2s 后获得200
+            const v3 = await getNumber(300,3000)// 延迟3s 后获得300
+            console.log(v1 + v2 + v3); // 600
+        }
+        foo()
+    </script>
+</body>
+</html>

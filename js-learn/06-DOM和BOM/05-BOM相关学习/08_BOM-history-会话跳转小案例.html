@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用history实现会话的跳转</title>
+</head>
+<body>
+    <!-- 
+        使用 history 实现一个页面的会话跳转
+     -->
+    <button class="open">打开一个新的会话</button>
+    <button class="prev">回到上一个会话</button>
+    <button class="next">进入下一个会话</button>
+
+    <script>
+
+        // 进入一个新的会话
+        document.querySelector(".open").onclick = function(){
+            // 接收一个url
+            const url = prompt("请输入新的会话url:",undefined)
+            if (url) {
+                history.pushState(undefined,"",`/${url}`)
+            }
+        }
+
+        // 回到上一个会话
+        document.querySelector(".prev").onclick = function(){
+            history.back()
+        }
+
+        // 进入下一个会哈
+        document.querySelector(".next").onclick = function(){
+            history.forward()
+        }
+
+
+    </script>
+</body>
+</html>

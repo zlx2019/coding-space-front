@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async 异步函数</title>
+</head>
+<body>
+    <script>
+        // 被 async 关键字声明的函数，被称为异步函数
+        // 异步函数的多种写法
+        // 方式一
+        async function foo(){
+            console.log("异步函数创建方式一");
+        }
+
+        // 方式二
+        const bar = async () => {
+            console.log("异步函数创建方式二");
+        }
+
+        // 方式三
+        const baz = async function (){
+            console.log("异步函数创建方式三");
+        }
+
+        // 方式四
+        class Person{
+            async say(){
+                console.log("异步函数创建方式四");
+            }
+        }
+
+        foo()
+        bar()
+        baz()
+        new Person().say()
+    </script>
+</body>
+</html>

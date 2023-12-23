@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * ES12中，FinalizationRegistry 提供了一种方法，用于请求在注册表中注册的值被回收（垃圾收集）时调用清理回调。 （清理回调有时称为终结器。）
+         */
+        // 创建一个对象
+        let obj = {
+            name: "zhangsan",
+            age: 18
+        }
+        // 创建注册表
+        const finalRegistry = new FinalizationRegistry(objName=>{
+            console.log(`${objName}对象被回收掉了~`);
+        })
+        // 将对象注册到注册表
+        finalRegistry.register(obj,"obj")
+
+        // 将对象置为 不可达
+        obj = null
+        
+        //...
+        // 片刻之后，该对象就会被回收，并且调用注册表的回调'
+        // obj对象被回收掉了~
+    </script>
+</body>
+</html>

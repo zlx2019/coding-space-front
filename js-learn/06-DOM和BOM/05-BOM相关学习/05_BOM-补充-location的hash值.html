@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是hash</title>
+</head>
+<body>
+    动态输入hash: <input type="text" class="hash">
+    <script>
+        /**
+         * hash是什么？一个页面的url地址中，以`#`符号开头，后面的内容就是该url的hash值;
+         * 如 http://www.zero.com#abc123 它的hash就是 `#abc123`
+         * 如 http://www.zero.com#home/index 它的hash就是 `#home/index`
+         * 
+         * hash是非常重要的一个概念，目前前端路由常见的方式有两种，其中一种就是基于hash的改变而实现路由;
+         */
+
+        // 监听当前页面的hash变化事件
+        window.onhashchange = function(e){
+            console.log(`当前页面hash发生变化: ${window.location.hash}`);
+        }
+
+        // 通过文本框，动态修改页面的hash
+        document.querySelector(".hash").oninput = function(e){
+            window.location.hash = e.target.value
+            console.log(e.target.value);
+        }
+    </script>
+</body>
+</html>

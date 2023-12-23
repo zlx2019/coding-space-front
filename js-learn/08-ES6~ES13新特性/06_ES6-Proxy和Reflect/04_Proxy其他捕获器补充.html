@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Proxy的handler捕获器有非常多，最常用的已经提到过了，也就是set和get，下面补充一下其他不常用的捕获器
+        参考: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy
+     -->
+     <script>
+        let obj = {
+            name: "zhangsan",
+            age: 18,
+            height: 188.8
+        }
+
+        // 1. has()
+        // 捕获 in 操作符的代理方法
+        const hasProxy = new Proxy(obj,{
+            has(target,property){
+                console.log(`拦截到 in 操作符，判断是否存在的属性: ${property}`);
+                return property in target
+            }
+        })
+        "name" in hasProxy // 拦截到 in 操作符，判断是否存在的属性: name
+
+
+        // 2. deleteProperty()
+        // 捕获对象属性的 delete 操作符
+        const deleteProxy = new Proxy(obj,{
+            deleteProperty: function(target,property){
+                console.log(`拦截到 delete 操作，要删除的属性:${property}`);
+                delete target[property]
+            }
+        })
+        delete deleteProxy.height // 拦截到 delete 操作，要删除的属性:height
+
+        // 3. construct()
+        // 用于捕获拦截函数对象的 new 操作符的代理方法
+        // 被代理的target必须具有constructor构造方法，即 new target() 是有效的;
+        function foo(name,age){
+            this.name = name
+            this.age = age
+        }
+        const constructProxy = new Proxy(foo,{
+            construct(target,args){
+                console.log(`拦截到 new 操作，创建${target.name} 实例`);
+                return new target(...args)
+            }
+        })
+        const f = new constructProxy("zhangsan",18) // 拦截到 new 操作，创建foo 实例
+        console.log(f); // foo {name: 'zhangsan', age: 18}
+     </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflect的常用方法</title>
+</head>
+<body>
+    <script>
+        // 1. Reflect.apply(target, thisObj, args)
+        // 调用目标函数，并且绑定this; 等同于 Function.apply()方法
+        function foo(...args){
+            console.log(this,args);
+            return args
+        }
+        const fooRes = Reflect.apply(foo,"this",["zhangsan",18]) // String {'this'} ['zhangsan', 18]
+        console.log(fooRes); // ['zhangsan', 18]
+
+
+        // 2. Reflect.defineProperty(target, propertyKey, attributes)
+        // 为对象添加属性; 基本等同于 Object.defineProperty() 方法，唯一不同是返回 Boolean 值。
+        const obj = {}
+        const succ = Reflect.defineProperty(obj,"name",{
+            configurable: true,
+            value: "zhangsan"
+        })
+        if(succ){
+            console.log(`添加属性成功，${obj.name}`); // 添加属性成功，zhangsan
+        }
+
+        // 3. Reflect.deleteProperty(target, propertyKey)
+        // 为对象删除属性; 等同于 delete 操作符
+        if(Reflect.deleteProperty(obj,"name")){
+            console.log(`name属性删除成功, name: ${obj.name}`); // name属性删除成功, name: undefined
+        }
+
+        // 4. Reflect.set(target,property,value,receiver)
+        // 如果遇到 setter，receiver则为setter调用时的this值。
+        // 为对象的属性设置值
+        if(Reflect.set(obj,"name","李四")){
+            console.log(`为obj设置name属性成功, name: ${obj.name}`);
+        }
+
+        // 5. Reflect.get(target, propertyKey)
+        // 获取对象的某个属性的值
+        const name = Reflect.get(obj,"name")
+        console.log(name); // 李四
+
+        // 6. Reflect.has(target,property)
+        // 作用与 in 操作符 相同,检查目标对象是否存在此属性。
+        if(Reflect.has(obj,"name")){
+            console.log("obj 存在name属性"); // obj 存在name属性
+        }
+
+        // 7. Reflect.setPrototypeOf(target,prototype)
+        // 设置对象的原型; 等同于 Object.setPrototypeOf()方法
+        // 返回boolean，表示是否成功
+        const proto = {username: "root"}
+        if(Reflect.setPrototypeOf(obj,proto)){
+            console.log("设置原型成功");
+        }
+
+        // 8. Reflect.getPrototypeOf(target)
+        // 获取对象的原型(隐式原型); 等同于Object.getPrototypeOf()方法
+        const objPrototype = Reflect.getPrototypeOf(obj)
+        console.log(objPrototype); // {username: 'root'}
+
+        // 9. Reflect.getOwnPropertyDescriptor(target, propertyKey)
+        // 获取对象属性的描述符，如果不存在该属性，则返回undefiend
+        console.log(Reflect.getOwnPropertyDescriptor(obj,"name")); // {value: '李四', writable: true, enumerable: true, configurable: true}
+
+        // 10. Reflect.construct(target,args,newTarget)
+        //  - target: 要反射的构造函数
+        //  - args: target构造函数的参数
+        //  - newTarget: 作为新创建对象的构造函数
+        // 该方法的功能是，通过反射，借用target的构造函数，来创建出一个newTarget实例对象
+        // 简单来说就是，执行的构造函数是target的，而返回的类型是newTarget的
+
+        function Person(name,age){
+            this.name = name
+            this.age = age
+        }
+        function Student(){}
+        // 创建出Student实例，执行Person的构造函数，将Student实例作为this传递进去,从而实现构造函数的借用
+        const stu = Reflect.construct(Person,["zhangsan",18],Student)
+        console.log(stu); // Student {name: 'zhangsan', age: 18}
+        console.log(stu.__proto__ === Student.prototype); // true 
+    </script>
+</body>
+</html>

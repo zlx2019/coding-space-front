@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflect是什么</title>
+</head>
+<body>
+    <!-- 
+        Reflect是ES6中提供的一个新的对象，主要用来提供一些操作对象的方法；其实本质上就是将ES5之前的操作对象API，汇总到该对象中，统一管理起来;
+            如 Object.definedProperty()、delete、in操作符等功能
+        Reflect 不是一个函数对象，因此它是不可构造的。
+
+
+        与之相比，Reflect的功能更为强大和友好
+        下面会逐一介绍该对象的功能，官方参考: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+     -->
+     <script>
+        // 举个栗子，为一个对象添加一个属性
+        const obj = {}
+        // ES5之前:
+        Object.defineProperty(obj,"name",{
+            value: "张三"
+        })
+
+        // ES6之后
+        const succ = Reflect.defineProperty(obj,"age",{
+            value: 18
+        })
+        if(succ){
+            console.log(obj); // {name: '张三', age: 18}
+        }
+
+     </script>
+</body>
+</html>

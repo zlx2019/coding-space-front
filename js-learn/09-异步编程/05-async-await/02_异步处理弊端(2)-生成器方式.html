@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用生成器来优化弊端</title>
+</head>
+<body>
+    <!-- 
+        上一节我们使用Promise链式调用来解决多个请求之间的串行化，但是看起来太过于繁琐，并且不利于阅读
+        接下来我们使用生成器来优化该案例
+     -->
+    <script>
+        // 定义一个生成器函数，用来控制多个异步请求的执行流程
+        function * getData(){
+            // 发送第一个请求
+            const res1 = yield new Promise((resolve)=>resolve(100))
+            console.log(`第一个请求响应数据: ${res1}`);
+            
+            // 发送第二个请求
+            const res2 = yield new Promise((resolve)=>resolve(res1 + 100))
+            console.log(`第二个请求响应数据: ${res2}`);
+            
+            // 发送第三个请求
+            const res3 = yield new Promise((resolve)=>resolve(res2 + 100))
+            console.log(`第三个请求响应数据: ${res3}`);
+        }
+
+        // 获取生成器，获取每一次请求返回的数据，并且作为下一次请求的参数，传递进生成器函数
+        const gen = getData()
+        // 执行第一个请求
+        gen.next().value.then(res1=>{
+            // 执行第二个请求，并且将第一个请求的结果传递进去
+            gen.next(res1).value.then(res2=>{
+                // 执行第三个请求，并且将第二个请求的结果传递进去
+                gen.next(res2).value.then(res3=>{
+                    // 将第三个请求的结果传递进去
+                    gen.next(res3)
+                })
+            })
+        })
+        // 第一个请求响应数据: 100
+        // 第二个请求响应数据: 200
+        // 第三个请求响应数据: 300
+
+        // 使用这种方式，其实单看 getData() 函数内的逻辑是比较清晰的
+        // 但是问题就是需要手动驱动生成器，这里看起来极为复杂
+        // 没关系，下一节我们会继续优化该案例;
+    </script>
+</body>
+</html>
